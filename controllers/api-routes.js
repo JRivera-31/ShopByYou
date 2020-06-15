@@ -19,7 +19,10 @@ module.exports = function(app) {
         });
     });
 
-    // do we need to add in logout?
+    app.get("/logout", function(req, res) {
+        req.logout();
+        res.redirect("/");
+      });
 
     app.get("/api/user_data", function(req, res){
         if(!req.user){
