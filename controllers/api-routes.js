@@ -2,11 +2,11 @@ const db = require("../models")
 const passport = require("../config/passport");
 
 module.exports = function(app) {
-    app.post("/api/login", passport.authenticate("local"), (req,res)=>{
+    app.post("/api/login", passport.authenticate("local"), (req,res) => {
         res.json(req.user);
     });
 
-    app.post("/api/signup", (req,res)=>{
+    app.post("/api/signup", (req,res) => {
         db.User.create({
             first_name: req.body.first_name,
             last_name: req.body.last_name,
@@ -24,7 +24,7 @@ module.exports = function(app) {
         res.redirect("/");
       });
 
-    app.get("/api/user_data", function(req, res){
+    app.get("/api/user_data", (req, res) => {
         if(!req.user){
             res.json({});
         } else {
@@ -36,4 +36,8 @@ module.exports = function(app) {
             });
         }
     });
+
+    app.post("/api/sell", (req, res) => {
+        
+    })
 }
