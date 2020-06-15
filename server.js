@@ -22,8 +22,8 @@ app.use(session({ secret: process.env.SESSION_SECRET || "keyboard cat", resave: 
 app.use(passport.initialize());
 app.use(passport.session());
 
-routes
-const routes = require("./controllers/");
+// routes
+const routes = require("./controllers/render-routes.js");
 app.use(routes);
 
 //syncing models

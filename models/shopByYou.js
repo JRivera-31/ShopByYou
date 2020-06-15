@@ -29,6 +29,6 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   });
-  return Store;
+  return Item;
 };
 
