@@ -9,7 +9,7 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-//handlebars 
+//handlebars
 var exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
@@ -22,8 +22,9 @@ app.use(passport.session());
 //routes
 var routes = require("./controllers/");
 app.use(routes);
+
 //syncing models
-var db = require('./models');
+var db = require("./models");
 
 
 //Syncing sequelize models and then starting express server
@@ -32,4 +33,3 @@ db.sequelize.sync().then(function() {
     console.log("App listening on PORT " + PORT);
   });
 });
-
