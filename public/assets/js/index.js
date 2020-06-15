@@ -1,15 +1,16 @@
 //inputting item up for sell
 $(function () {
-    $(".ui inverted").on("click", event => {
+    $("#itemForm").on("click", event => {
         event.preventDefault();
         let newItem = {
+            //grabbing name values
             item_name: $('item').val().trim(),
             price: $('price').val().trim(),
             category: $('category').val().trim(),
             quantity: $('quantity').val().trim(),
             description: $('description').val().trim()
         };
-        $.ajax('/api/sell', {
+        $.ajax('/api/', {
             type: 'POST',
             data: newItem
         }).then(function() {
