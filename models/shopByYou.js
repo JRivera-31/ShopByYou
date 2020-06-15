@@ -18,7 +18,8 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     image: {
-      type: DataTypes.BLOB("long")
+      type: DataTypes.BLOB("tiny"),
+      allowNull: 0
     },
     description: {
       type: DataTypes.STRING,

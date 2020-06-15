@@ -18,5 +18,4 @@ $(function () {
             location.reload();
         });
     });
-    
 })
