@@ -4,23 +4,29 @@ module.exports = function(sequelize, DataTypes) {
     // eslint-disable-next-line camelcase
     item_name: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: 0
     },
     category: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: 0
     },
     quantity: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: 0,
+      validate: {
+        isInt: true
+      }
     },
     description: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: 0
     },
     price: {
       type: DataTypes.DECIMAL,
-      allowNull: false
+      allowNull: 0,
+      validate: {
+        isDecimal: true
+      }
     }
   });
   return Store;
