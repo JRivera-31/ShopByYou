@@ -9,6 +9,11 @@ $(function () {
             quantity: $('quantity').val().trim(),
             description: $('description').val().trim()
         };
-        
-    })
+    }).then(() => {
+        console.log("Added item to database.")
+        location.reload();
+    }).catch((err) =>{
+        if (err) res.status(500);
+    });
+    
 })
