@@ -22,6 +22,7 @@ app.use(passport.session());
 //routes
 var routes = require("./controllers/");
 app.use(routes);
+
 //syncing models
 var db = require("./models");
 
