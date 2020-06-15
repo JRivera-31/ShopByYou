@@ -22,9 +22,9 @@ app.use(session({ secret: process.env.SESSION_SECRET || "keyboard cat", resave: 
 app.use(passport.initialize());
 app.use(passport.session());
 
-//routes
-// const routes = require("./controllers/");
-// app.use(routes);
+routes
+const routes = require("./controllers/");
+app.use(routes);
 
 //syncing models
 const db = require("./models");
