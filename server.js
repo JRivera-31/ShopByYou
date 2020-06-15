@@ -1,8 +1,11 @@
 //express
-var express = require("express");
-var app = express();
+const express = require("express");
+const session = require("express-session")
+const app = express();
+const passport = require("./config/passport.js")
+
 //port
-var PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8080;
 // app
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -10,7 +13,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 //handlebars
-var exphbs = require("express-handlebars");
+const exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
@@ -20,11 +23,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //routes
-var routes = require("./controllers/");
-app.use(routes);
+// const routes = require("./controllers/");
+// app.use(routes);
 
 //syncing models
-var db = require("./models");
+const db = require("./models");
 
 
 //Syncing sequelize models and then starting express server
