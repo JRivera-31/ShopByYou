@@ -1,6 +1,6 @@
 //StoreByYou model
 module.exports = function(sequelize, DataTypes) {
-  var Store = sequelize.define("Store", {
+  let Item = sequelize.define("Item", {
     // eslint-disable-next-line camelcase
     item_name: {
       type: DataTypes.STRING,
