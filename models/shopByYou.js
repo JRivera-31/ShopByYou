@@ -17,6 +17,10 @@ module.exports = function(sequelize, DataTypes) {
         isInt: true
       }
     },
+    image: {
+      type: DataTypes.BLOB("tiny"),
+      allowNull: 0
+    },
     description: {
       type: DataTypes.STRING,
       allowNull: 0
