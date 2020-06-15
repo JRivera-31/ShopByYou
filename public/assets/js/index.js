@@ -9,11 +9,13 @@ $(function () {
             quantity: $('quantity').val().trim(),
             description: $('description').val().trim()
         };
-    }).then(() => {
-        console.log("Added item to database.")
-        location.reload();
-    }).catch((err) =>{
-        if (err) res.status(500);
+        $.ajax('/api/sell', {
+            type: 'POST',
+            data: newItem
+        }).then(function() {
+            console.log('Added item to database');
+            location.reload();
+        });
     });
     
 })
