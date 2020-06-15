@@ -6,16 +6,16 @@ module.exports = function(sequelize, DataTypes) {
     // params for login, mau need to be modified for different names
     email: {
       type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
+      allowNull: 0,
+      unique: 1,
       validate: {
-        isEmail: true
+        isEmail: 1
       }
     },
     // The password cannot be null
     password: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: 1
     },
   });
 
