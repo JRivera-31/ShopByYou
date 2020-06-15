@@ -17,9 +17,9 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
-        // maybe wrong to insert this here, may another model for guest?
+    // maybe wrong to insert this here, may another model for guest?
     guest: {
-    type: Boolean
+      type: Boolean
     }
   });
 
