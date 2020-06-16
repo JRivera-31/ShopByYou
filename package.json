@@ -36,6 +36,9 @@
     "nodemon": "^2.0.4"
   },
   "nodemonConfig": {
-    "ignore": ["views/*", "public/*"]
+    "ignore": [
+      "views/*",
+      "public/*"
+    ]
   }
 }
