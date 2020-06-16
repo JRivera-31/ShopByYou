@@ -11,7 +11,7 @@ $(function() {
         description: $('.description').val().trim()
     };
     //adding item to sell in sell.handlbars
-    $("#itemForm").on("click", event => {
+    $("#itemForm").on("submit", event => {
         event.preventDefault();
         $.ajax('/api/item', {
             type: 'POST',
@@ -26,7 +26,7 @@ $(function() {
         localStorage.set("userCart", JSON.stringify(item));
         let userItems = localStorage.getItem("userCart");
 
-        
+
     })
     //
 
