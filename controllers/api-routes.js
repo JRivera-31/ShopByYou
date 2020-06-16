@@ -1,5 +1,5 @@
 const db = require("../models")
-const passport = require("../config/passport");
+const passport = require("../config/passport.js");
 
 module.exports = function(app) {
     app.post("/api/login", passport.authenticate("local"), (req,res) => {
@@ -8,8 +8,6 @@ module.exports = function(app) {
 
     app.post("/api/signup", (req,res) => {
         db.User.create({
-            first_name: req.body.first_name,
-            last_name: req.body.last_name,
             email: req.body.email,
             password: req.body.password
         }).then(function(){
@@ -29,8 +27,6 @@ module.exports = function(app) {
             res.json({});
         } else {
             res.json({
-                first_name: req.user.first_name,
-                last_name: req.user.last_name,
                 email: req.user.email,
                 id: req.user.id
             });

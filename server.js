@@ -7,30 +7,38 @@ const passport = require("./config/passport.js")
 const path = require("path")
 const multer = require("multer")
 
-// Init upload
-const upload = multer({
-  storage: storage,
-  limits: { fileSize: 1000000 },
-  fileFilter: function (req, file, cb) {
-      checkFileType(file, cb)
-  } 
-}).single("userImg")
-
-// Check file type helper
-const checkFileType = (file, cb) => {
-  // Allowed exts
-  const filetypes = /jpeg|jpg|png|gif/
-  // Check ext
-  const extname = filetypes.test(path.extname(file.originalname).toLowerCase())
-  // Check mime 
-  const mimetype = filetypes.test(file.mimetype)
-
-  if (mimetype && extname) {
-      return cb(null, true)
-  } else {
-      cb("Error: Images only!")
+// Set storage engine
+const storage = multer.diskStorage({
+  destination: "./public/uploads/",
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + "-" + Date.now() + path.extname(file.originalname))
   }
-}
+})
+
+// Init upload
+// const upload = multer({
+//   storage: storage,
+//   limits: { fileSize: 1000000 },
+//   fileFilter: function (req, file, cb) {
+//       checkFileType(file, cb)
+//   } 
+// }).single("userImg")
+
+// // Check file type helper
+// const checkFileType = (file, cb) => {
+//   // Allowed exts
+//   const filetypes = /jpeg|jpg|png|gif/
+//   // Check ext
+//   const extname = filetypes.test(path.extname(file.originalname).toLowerCase())
+//   // Check mime 
+//   const mimetype = filetypes.test(file.mimetype)
+
+//   if (mimetype && extname) {
+//       return cb(null, true)
+//   } else {
+//       cb("Error: Images only!")
+//   }
+// }
 
 //port
 const PORT = process.env.PORT || 8080;
@@ -38,7 +46,7 @@ const PORT = process.env.PORT || 8080;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use(express.static("public"));
+app.use(express.static(__dirname + "/public"));
 
 //handlebars
 const exphbs = require("express-handlebars");
@@ -51,11 +59,14 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // routes
-const routes = require("./controllers/render-routes.js");
-app.use(routes);
+const renderRoutes = require("./controllers/render-routes.js");
+app.use(renderRoutes);
+const apiRoutes = require("./controllers/api-routes.js");
+apiRoutes(app);
 
 //syncing models
 const db = require("./models");
+const e = require("express");
 
 
 //Syncing sequelize models and then starting express server
