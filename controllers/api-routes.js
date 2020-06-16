@@ -33,7 +33,9 @@ module.exports = function(app) {
         }
     });
 
-    app.post("/api/sell", (req, res) => {
-        
+    app.post("/api/sellitem", (req, res) => {
+        db.Item.create({
+            
+        })
     })
 }
