@@ -1,8 +1,6 @@
-<nav class="ui fixed inverted menu">
+ <nav class="ui fixed inverted menu">
       <div class="ui container">
-        <a href="#" class="header item">
-          ShopByYou
-        </a>
+        <div class="header item">ShopByYou</div>
         <a href="index.html" class="item">Home</a>
         <div class="ui simple dropdown item">
           <a href="category.html"> Categories <i class="dropdown icon"></i></a>
@@ -16,18 +14,13 @@
         </div>
         <a href="favourite.html" class="item">Favorites</a>
         <a href="sell.html" class="item">Sell</a>
-
         <div class="right menu">
+          <div class="header item">Welcome:</div>
+          <a href="cart.html" class="item">
+            <i class="shopping cart icon"></i>Shopping Cart</a>
           <div class="item">
-            <a class="ui inverted primary button" href="login.html">Log in</a>
+            <a class="ui inverted violet button" href="#">Logout</a>
           </div>
-          <div class="item">
-            <a class="ui inverted violet button" href="signup.html">Sign Up</a>
-          </div>
-
-          <a href="cart.html" class="item"
-            ><i class="shopping cart icon"></i>Shopping Cart</a
-          >
         </div>
       </div>
     </nav>
@@ -71,8 +64,7 @@
                       name="category"
                       placeholder="Item Category"
                     />
-                  </div>
-                  
+                  </div> 
                 </div>
                 <div class="field">
                   <div class="ui left icon input">
@@ -86,17 +78,24 @@
                 </div>
                 <div class="field" enctype="multipart/form-data">
                   <div class="ui action input">
-                      <!-- <input type="text" placeholder="File 1" readonly> -->
                       <input type="file">
-                      <!-- <div class="ui icon button">
-                        <i class="attach icon"></i>
-                      </div> -->
                   </div>
                 </div>
-
-                <div class="field">
+             <div class="field">
                   <label>Description of Item</label>
                   <textarea></textarea>
+                </div>
+                <div class="field">
+                    <div class="ui simple dropdown item">
+                        <a href="category.html"> Categories <i class="dropdown icon"></i></a>
+                        <div class="menu">
+                          <a class="item" href="#">Women</a>
+                          <a class="item" href="#">Men</a>
+                          <div class="divider"></div>
+                          <div class="item" href="#">Household</div>
+                          <a class="item" href="#">Accessories</a>
+                        </div>
+                  </div>
                 </div>
                 <div class="ui inverted fluid large purple submit button">
                   Submit
