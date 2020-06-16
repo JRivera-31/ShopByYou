@@ -6,6 +6,8 @@ const passport = require("./config/passport.js")
 // Path and multer for image uploading
 const path = require("path")
 const multer = require("multer")
+// env
+require("dotenv").config()
 
 // Google cloud storage
 import * as MulterGoogleCloudStorage from "multer-google-storage"
@@ -13,6 +15,11 @@ import * as MulterGoogleCloudStorage from "multer-google-storage"
 //Init upload
 const uploadHandler = multer({
   storage: new MulterGoogleCloudStorage(),
+})
+
+app.post("/uploads", uploadHandler.any(), (req, res) => {
+  console.log(req.files)
+  res.json(req.files)
 })
 
 //port
