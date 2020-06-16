@@ -43,7 +43,7 @@
         </div>
         {{/if}} 
         {{else}}
-        {{if login}}
+        {{#if login}}
          <div class="right menu">
           <div class="item">
             <div class="ui inverted violet button" href="/signup">Sign Up</div>
@@ -51,7 +51,7 @@
         </div>
         {{/if}}
         {{else}}
-        {{if signup}}
+        {{#if signup}}
          <div class="right menu">
           <div class="item">
             <div class="ui inverted primary button" href="/">Log in</div>
@@ -59,7 +59,7 @@
        </div>
        {{/if}}
        {{else}}
-       {{if guest_shop}}
+       {{#if guest_shop}}
        <a href="/" class="item">Home</a>
         <div class="ui simple dropdown item">
           <a href="/category"> Categories <i class="dropdown icon"></i></a>
