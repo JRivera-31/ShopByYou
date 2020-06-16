@@ -1,19 +1,22 @@
 const express = require("express")
 const passport = require("../config/passport");
-
+const isAuthenticated = require("../config/middleware/isAuthenticated");
 const router = express.Router()
 
 // =======  Render Routes =======
 router.get("/", (req, res) => {
     res.render("login")
+    if (req.user) {
+        res.redirect("/member-shop");
+      }
 })
 
 router.get("/signup", (req, res) => {
     res.render("signup")
 })
 
-router.get("/user-shop", (req, res) => {
-    res.render("user_shop")
+router.get("/member-shop", (req, res) => {
+    res.render("member_shop")
 })
 
 router.get("/category", (req, res) => {
@@ -26,6 +29,7 @@ router.get("/favourite", (req, res) => {
 
 router.get("/guest-shop", (req, res) => {
     res.render("guest_shop")
+
 })
 
 router.get("/cart", (req, res) => {
