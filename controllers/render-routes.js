@@ -5,7 +5,7 @@ const router = express.Router()
 
 // =======  Render Routes =======
 router.get("/", (req, res) => {
-    res.render("login")
+        res.render("login")
     if (req.user) {
         res.redirect("/member-shop");
       }
@@ -16,10 +16,10 @@ router.get("/signup", (req, res) => {
 })
 
 router.get("/member-shop", (req, res) => {
-  if (req.user){
+    if (req.user){
     res.render("member_shop")
-  }  else {
-      res.render("guest_shop")
+  } else {
+    res.render("guest_shop")
   }
 })
 
@@ -39,8 +39,8 @@ router.get("/sell", (req, res) => {
     res.render("sell")
 })
 
-// app.get("/members", isAuthenticated, function(req, res) {
-//     res.sendFile(path.join(__dirname, "../public/members.html"));
-//   });
+router.get("/member-shop", isAuthenticated, function(req, res) {
+    res.render("member_shop");
+});
 
 module.exports = router
