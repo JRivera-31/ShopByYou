@@ -42,7 +42,7 @@
       <div class="ui center aligned container">
         <div class="ui two column centered grid">
           <div class="column">
-            <form class="ui large form">
+            <form class="ui large form" id="login-form">
               <div class="ui inverted stacked segment">
                 <div class="field">
                   <div class="ui left icon input">
@@ -51,6 +51,7 @@
                       type="text"
                       name="email"
                       placeholder="E-mail address"
+                      id="email-input"
                     />
                   </div>
                 </div>
@@ -61,6 +62,7 @@
                       type="password"
                       name="password"
                       placeholder="Password"
+                      id="pass-input"
                     />
                   </div>
                 </div>
@@ -80,3 +82,46 @@
         </div>
       </div>
     </main>
+
+    <script>
+      $(function() {
+    // Getting references to our form and inputs
+    var loginBtn = $("#login-btn");
+    var emailInput = $("#email-input");
+    var passwordInput = $("#pass-input");
+  
+    // When the form is submitted, we validate there's an email and password entered
+    loginBtn.on("click", function(event) {
+      event.preventDefault();
+      var userData = {
+        email: emailInput.val().trim(),
+        password: passwordInput.val().trim()
+      };
+  
+      if (!userData.email || !userData.password) {
+        return;
+      }
+  
+      // If we have an email and password we run the loginUser function and clear the form
+      loginUser(userData.email, userData.password);
+      emailInput.val("");
+      passwordInput.val("");
+    });
+  
+    // loginUser does a post to our "api/login" route and if successful, redirects us the the members page
+    function loginUser(email, password) {
+      $.post("/api/login", {
+        email: email,
+        password: password
+      })
+        .then(function() {
+          window.location.replace("/members");
+          // If there's an error, log the error
+        })
+        .catch(function(err) {
+          console.log(err);
+        });
+    }
+  });
+  
+    </script>
