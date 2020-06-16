@@ -39,7 +39,7 @@ router.get("/sell", (req, res) => {
     res.render("sell")
 })
 
-app.get("/member-shop", isAuthenticated, function(req, res) {
+router.get("/member-shop", isAuthenticated, function(req, res) {
     res.render("member_shop");
 });
 
