@@ -17,10 +17,10 @@ module.exports = function(sequelize, DataTypes) {
         isInt: true
       }
     },
-    image: {
-      filePath: DataTypes.STRING,
-      allowNull: false
-    },
+    // image: {
+    //   filePath: DataTypes.STRING,
+    //   allowNull: false
+    // },
     description: {
       type: DataTypes.STRING,
       allowNull: false
