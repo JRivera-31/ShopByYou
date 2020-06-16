@@ -3,6 +3,34 @@ const express = require("express");
 const session = require("express-session")
 const app = express();
 const passport = require("./config/passport.js")
+// Path and multer for image uploading
+const path = require("path")
+const multer = require("multer")
+
+// Init upload
+const upload = multer({
+  storage: storage,
+  limits: { fileSize: 1000000 },
+  fileFilter: function (req, file, cb) {
+      checkFileType(file, cb)
+  } 
+}).single("userImg")
+
+// Check file type helper
+const checkFileType = (file, cb) => {
+  // Allowed exts
+  const filetypes = /jpeg|jpg|png|gif/
+  // Check ext
+  const extname = filetypes.test(path.extname(file.originalname).toLowerCase())
+  // Check mime 
+  const mimetype = filetypes.test(file.mimetype)
+
+  if (mimetype && extname) {
+      return cb(null, true)
+  } else {
+      cb("Error: Images only!")
+  }
+}
 
 //port
 const PORT = process.env.PORT || 8080;
