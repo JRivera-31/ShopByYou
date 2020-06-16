@@ -1,14 +1,14 @@
 $(function() {
     // Getting references to our form and input
-    var signUpForm = $("#signupForm");
-    var emailInput = $("#email-input");
-    var passwordInput = $("#password-input");
+    const signUpForm = $("#signupForm");
+    const emailInput = $("#email-input");
+    const passwordInput = $("#password-input");
+    const verPass = $("#verPass")
   
     // When the signup button is clicked, we validate the email and password are not blank
     signUpForm.on("submit", function(event) {
       event.preventDefault();
-      console.log("submit");
-      var userData = {
+      let userData = {
         email: emailInput.val().trim(),
         password: passwordInput.val().trim()
       };
@@ -16,6 +16,12 @@ $(function() {
       if (!userData.email || !userData.password) {
         return;
       }
+
+      // Verify password
+      if (userData.password != verPass.val().trim()) {
+        return alert("Passwords don't match!")
+      }
+
       // If we have an email and password, run the signUpUser function
       signUpUser(userData.email, userData.password);
       emailInput.val("");
