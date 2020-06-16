@@ -1,46 +1,49 @@
-const express = require("express")
+const express = require("express");
 const passport = require("../config/passport");
 const isAuthenticated = require("../config/middleware/isAuthenticated");
-const router = express.Router()
+const router = express.Router();
 
 // =======  Render Routes =======
 router.get("/", (req, res) => {
-    res.render("login")
-    if (req.user) {
-        res.redirect("/member-shop");
-      }
-})
+  res.render("login");
+  if (req.user) {
+    res.redirect("/member-shop");
+  }
+});
 
 router.get("/signup", (req, res) => {
-    res.render("signup")
-})
+  res.render("signup");
+});
 
-router.get("/member-shop", (req, res) => {
-  if (req.user){
-    res.render("member_shop")
-  }  else {
-      res.render("guest_shop")
-  }
+router.get("/member-shop", isAuthenticated, (req, res) =>{
+  if (req.user) {
+    res.render("member_shop",{user: req.user});
+  } 
+});
+
+router.get("/guest-shop", (req, res) => {
+    res.render("guest_shop");
 })
 
 router.get("/category", (req, res) => {
-    res.render("category")
-})
+  res.render("category");
+});
 
 router.get("/favourite", (req, res) => {
-    res.render("favourite")
-})
+  res.render("favourite");
+});
 
 router.get("/cart", (req, res) => {
-    res.render("cart")
-})
+  res.render("cart");
+});
 
 router.get("/sell", (req, res) => {
-    res.render("sell")
-})
+  res.render("sell");
+});
 
-// app.get("/members", isAuthenticated, function(req, res) {
-//     res.sendFile(path.join(__dirname, "../public/members.html"));
-//   });
 
-module.exports = router
+router.get("/logout", function (req, res) {
+  req.logout();
+  res.redirect("/");
+});
+module.exports = router;

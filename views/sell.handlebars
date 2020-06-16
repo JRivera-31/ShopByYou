@@ -12,12 +12,12 @@
       <div class="ui center aligned container">
         <div class="ui two column centered grid">
           <div class="column">
-            <form class="ui large form">
+            <form class="ui large form" id="sellItem" action="/uploads" enctype="multipart/form-data" method="POST"> 
               <div class="ui inverted stacked segment">
                 <div class="field">
                   <div class="ui left icon input">
                     <i class="tag icon"></i>
-                    <input type="text" name="item" placeholder="Name of Item" />
+                    <input type="text" name="item" class="item" placeholder="Name of Item" />
                   </div>
                 </div>
                 <div class="field">
@@ -26,25 +26,19 @@
                     <input
                       type="text"
                       name="price"
+                      class="price"
                       placeholder="Price of Item"
                     />
                   </div>
                 </div>
-                <div class="field">
-                  <div class="ui left icon input">
-                    <i class="bars icon"></i>
-                    <input
-                      type="text"
-                      name="category"
-                      placeholder="Item Category"
-                    />
-                  </div> 
+            
                 </div>
                 <div class="field">
                   <div class="ui left icon input">
                     <i class="plus square outline icon"></i>
                     <input
                       type="text"
+                      class="quantity"
                       name="quantity"
                       placeholder="Item Quantity"
                     />
@@ -52,7 +46,7 @@
                 </div>
                 <div class="field" enctype="multipart/form-data">
                   <div class="ui action input">
-                      <input type="file">
+                      <input type="file" name="userImg" id = "userImg">
                   </div>
                 </div>
              <div class="field">
