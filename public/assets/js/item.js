@@ -1,29 +1,39 @@
 const { json } = require("sequelize");
 
 //inputting item up for sell
-$(function() {
-    let item = {
-        //grabbing name values
-        item_name: $('.item').val().trim(),
-        price: $('.price').val().trim(),
-        category: $('.category').val().trim(),
-        quantity: $('.quantity').val().trim(),
-        description: $('.description').val().trim()
-    };
-    //adding item to sell in sell.handlbars
-    $("#itemForm").on("submit", event => {
+$(function () {
+    //grabbing name values
+    const itemName = $('.item').val().trim();
+    const price = $('.price').val().trim();
+    const category = $('.category').val();
+    const quantity = $('.quantity').val().trim();
+    const description = $('.description').val().trim();
+    const image = $('#userImg');
+    const formSubmit = $('#sellItem');
+
+    formSubmit.on("submit", function(event) {
         event.preventDefault();
-        $.ajax('/api/item', {
-            type: 'POST',
-            data: item
-        }).then(function() {
-            console.log('Added item to database');
-            location.reload();
-        });
-    });
-    
+        let userItem = {
+            item_name: itemName,
+            category: category,
+            quantity: quantity,
+            image: image,
+            description: description,
+            price: price,
+        }
+        if(typeof price != "number") {
+            return alert("Price must be a number!");
+        }
+    })
+
+    //adding item to sell in sell.handlbars
+    $.post("/api/items", (req, res) => {
+
+    })
+
+
     //add item to cart
-    $(".ui inverted purple button").on("click", event =>{
+    $(".ui inverted purple button").on("click", event => {
 
         // localStorage.set("userCart", JSON.stringify(item));
         // let userItems = localStorage.getItem("userCart");
@@ -45,4 +55,4 @@ $(function() {
     });
     //remove from cart
 })
-   
+
