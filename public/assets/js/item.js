@@ -21,10 +21,12 @@ $(function() {
             location.reload();
         });
     });
+    
     //add item to cart
     $(".ui inverted purple button").on("click", event =>{
-        localStorage.set("userCart", JSON.stringify(item));
-        let userItems = localStorage.getItem("userCart");
+
+        // localStorage.set("userCart", JSON.stringify(item));
+        // let userItems = localStorage.getItem("userCart");
 
 
     })
