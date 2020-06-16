@@ -1,8 +1,6 @@
  <nav class="ui fixed inverted menu">
       <div class="ui container">
-       <div class="header item">
-          ShopByYou
-        </div>
+        <div class="header item">ShopByYou</div>
         <a href="/" class="item">Home</a>
         <div class="ui simple dropdown item">
           <a href="/category"> Categories <i class="dropdown icon"></i></a>
@@ -16,18 +14,13 @@
         </div>
         <a href="/favourite" class="item">Favorites</a>
         <a href="/sell" class="item">Sell</a>
-
         <div class="right menu">
+          <div class="header item">Welcome:{{!-- handlbars --}}</div>
+          <a href="/cart" class="item">
+            <i class="shopping cart icon"></i>Shopping Cart</a>
           <div class="item">
-            <a class="ui inverted primary button" href="/">Log in</a>
+            <a class="ui inverted violet button" href="/">Logout</a>
           </div>
-          <div class="item">
-            <a class="ui inverted violet button" href="/signup">Sign Up</a>
-          </div>
-
-          <a href="/cart" class="item"
-            ><i class="shopping cart icon"></i>Shopping Cart</a
-          >
         </div>
       </div>
     </nav>
@@ -48,7 +41,7 @@
                     src="https://assets.awwwards.com/awards/images/2013/06/secret-life-heroes%20(44).jpg"
                     class="ui right spaced image"
                   />
-                  <h3>Item Name</h3>
+                  <h3>Item Name {{!-- handlbars --}}</h3>
                 </div>
                 <div class="description ui left aligned">
                   <p>
@@ -80,11 +73,11 @@
               <div class="ui two bottom attached buttons">
                 <div class="ui inverted purple button">
                   <i class="add icon"></i>
-                  Cart
+                  Cart {{!-- handlbars --}}
                 </div>
                 <div class="ui inverted red button">
                   <i class="trash alternate outline icon"></i>
-                  Remove
+                  Remove {{!-- handlbars --}}
                 </div>
               </div>
             </div>
