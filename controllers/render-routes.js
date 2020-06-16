@@ -16,7 +16,11 @@ router.get("/signup", (req, res) => {
 })
 
 router.get("/member-shop", (req, res) => {
+  if (req.user){
     res.render("member_shop")
+  }  else {
+      res.render("guest_shop")
+  }
 })
 
 router.get("/category", (req, res) => {
@@ -27,11 +31,6 @@ router.get("/favourite", (req, res) => {
     res.render("favourite")
 })
 
-router.get("/guest-shop", (req, res) => {
-    res.render("guest_shop")
-
-})
-
 router.get("/cart", (req, res) => {
     res.render("cart")
 })
@@ -39,5 +38,9 @@ router.get("/cart", (req, res) => {
 router.get("/sell", (req, res) => {
     res.render("sell")
 })
+
+// app.get("/members", isAuthenticated, function(req, res) {
+//     res.sendFile(path.join(__dirname, "../public/members.html"));
+//   });
 
 module.exports = router
