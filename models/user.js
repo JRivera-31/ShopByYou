@@ -4,32 +4,18 @@ const bcrypt = require("bcryptjs");
 module.exports = function(sequelize, DataTypes) {
   let User = sequelize.define("User", {
     // params for login, mau need to be modified for different names
-    first_name: {
-      type: DataTypes.STRING,
-      allowNull: 0,
-      validate: {
-        isFirst: 1
-      }
-    },
-    last_name: {
-      type: DataTypes.STRING,
-      allowNull: 0,
-      validate: {
-        isLast: 1
-      }
-    },
     email: {
       type: DataTypes.STRING,
-      allowNull: 0,
-      unique: 1,
+      allowNull: false,
+      unique: true,
       validate: {
-        isEmail: 1
+        isEmail: true
       }
     },
     // The password cannot be null
     password: {
       type: DataTypes.STRING,
-      allowNull: 1
+      allowNull: true
     },
   });
 

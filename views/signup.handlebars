@@ -35,28 +35,8 @@
       <div class="ui center aligned container">
         <div class="ui two column centered grid">
           <div class="column">
-            <form class="ui large form">
+            <form class="ui large form" id="signupForm">
               <div class="ui inverted stacked segment">
-                <div class="field">
-                  <div class="ui left icon input">
-                    <i class="user icon"></i>
-                    <input
-                      type="text"
-                      name="first_name"
-                      placeholder="First Name"
-                    />
-                  </div>
-                </div>
-                <div class="field">
-                  <div class="ui left icon input">
-                    <i class="user icon"></i>
-                    <input
-                      type="text"
-                      name="last_name"
-                      placeholder="Last Name"
-                    />
-                  </div>
-                </div>
                 <div class="field">
                   <div class="ui left icon input">
                     <i class="user icon"></i>
@@ -64,6 +44,7 @@
                       type="text"
                       name="email"
                       placeholder="E-mail address"
+                      id="email-input"
                     />
                   </div>
                 </div>
@@ -74,6 +55,7 @@
                       type="password"
                       name="password"
                       placeholder="Password"
+                      id="password-input"
                     />
                   </div>
                 </div>
@@ -84,12 +66,13 @@
                       type="password"
                       name="password"
                       placeholder="Verify Password"
+                      id="verPass"
                     />
                   </div>
                 </div>
-                <div class="ui inverted fluid large violet submit button">
+                <button type="submit" class="ui inverted fluid large violet submit button" id="signUpBtn">
                   Sign Up
-                </div>
+                </button>
               </div>
               <div class="ui error message"></div>
             </form>
@@ -102,3 +85,4 @@
         </div>
       </div>
     </main>
+
