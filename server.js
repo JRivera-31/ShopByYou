@@ -7,38 +7,13 @@ const passport = require("./config/passport.js")
 const path = require("path")
 const multer = require("multer")
 
-// Set storage engine
-const storage = multer.diskStorage({
-  destination: "./public/uploads/",
-  filename: function (req, file, cb) {
-    cb(null, file.fieldname + "-" + Date.now() + path.extname(file.originalname))
-  }
-})
+// Google cloud storage
+import * as MulterGoogleCloudStorage from "multer-google-storage"
 
 //Init upload
-const upload = multer({
-  storage: storage,
-  limits: { fileSize: 1000000 },
-  fileFilter: function (req, file, cb) {
-      checkFileType(file, cb)
-  } 
-}).single("userImg")
-
-// Check file type helper
-const checkFileType = (file, cb) => {
-  // Allowed exts
-  const filetypes = /jpeg|jpg|png|gif/
-  // Check ext
-  const extname = filetypes.test(path.extname(file.originalname).toLowerCase())
-  // Check mime 
-  const mimetype = filetypes.test(file.mimetype)
-
-  if (mimetype && extname) {
-      return cb(null, true)
-  } else {
-      cb("Error: Images only!")
-  }
-}
+const uploadHandler = multer({
+  storage: new MulterGoogleCloudStorage(),
+})
 
 //port
 const PORT = process.env.PORT || 8080;
