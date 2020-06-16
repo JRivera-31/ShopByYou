@@ -34,14 +34,13 @@
         <a href="/favourite" class="item">Favorites</a>
         <a href="/sell" class="item">Sell</a>
         <div class="right menu">
-          <div class="header item">Welcome:{{!-- handlbars --}}</div>
+          <div class="header item">Welcome: {{ email }} </div>
           <a href="/cart" class="item">
             <i class="shopping cart icon"></i>Shopping Cart</a>
           <div class="item">
-            <div class="ui inverted violet button" href="/">Logout</div>
+            <div class="ui inverted violet button" href="/logout">Logout</div>
           </div>
         </div>
-        {{/if}} 
         {{else}}
         {{#if login}}
          <div class="right menu">
@@ -49,7 +48,6 @@
             <div class="ui inverted violet button" href="/signup">Sign Up</div>
           </div>
         </div>
-        {{/if}}
         {{else}}
         {{#if signup}}
          <div class="right menu">
@@ -57,7 +55,6 @@
             <div class="ui inverted primary button" href="/">Log in</div>
           </div>
        </div>
-       {{/if}}
        {{else}}
        {{#if guest_shop}}
        <a href="/" class="item">Home</a>
@@ -79,6 +76,9 @@
           </div>
        </div>
        {{/if}}
+       {{/if}}
+       {{/if}}
+       {{/if}} 
       </div>
     </nav>
 
