@@ -24,10 +24,22 @@ $(function () {
         if(typeof price != "number") {
             return alert("Price must be a number!");
         }
+        createItem(userItem);
     })
 
+    function createItem (item) {
+        $.post("/api/sellitem", {
+            item_name: item.item_name,
+            category: item.category,
+            quantity: item.quantity,
+            image: item.image,
+            description: item.description,
+            price: item.price,
+        })
+    }
+
     //adding item to sell in sell.handlbars
-    $.post("/api/items", (req, res) => {
+    $.post("/api/items", {
 
     })
 
