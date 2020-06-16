@@ -2,6 +2,37 @@ const { json } = require("sequelize");
 
 //inputting item up for sell
 $(function () {
+    //local storage for cart
+    let cart = [];
+    //check whether key cart is avalible in localStorage object 
+    if(localStorage.cart) {
+        cart = JSON.parse(localStorage.cart);
+        showCart();
+    }
+    //need to add the item into the cart;
+    //where we can display the item_name, quanity, price, and total  
+    function addToCart() {
+        
+        let price = $({price}).val();
+        let itemName = $({item_name}).val();
+        let quanity = $({quanity}).val();
+
+        for(let i in cart) {
+            if(cart[i].Product == name) {
+                cart[i].Qty = qty;
+                showCart();
+                saveCart();
+                return;
+            }
+        }
+        let item = {Product: name, Price: price, Quanity: quanity}
+        cart.push(item);
+        saveCart();
+        showCart();
+
+    }
+
+
     //grabbing name values
     // const itemName = $('.item').val().trim();
     // const price = $('.price').val().trim();
