@@ -17,10 +17,7 @@ module.exports = function(app) {
         });
     });
 
-    app.get("/logout", function(req, res) {
-        req.logout();
-        res.redirect("/");
-      });
+  
 
     app.get("/api/user_data", (req, res) => {
         if(!req.user){

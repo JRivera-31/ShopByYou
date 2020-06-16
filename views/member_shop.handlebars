@@ -15,11 +15,11 @@
         <a href="/favourite" class="item">Favorites</a>
         <a href="/sell" class="item">Sell</a>
         <div class="right menu">
-          <div class="header item">Welcome:{{!-- handlbars --}}</div>
+          <div class="header item" id="welcomeUser">Welcome: {{user.email}}</div>
           <a href="/cart" class="item">
             <i class="shopping cart icon"></i>Shopping Cart</a>
           <div class="item">
-            <div class="ui inverted violet button" href="/">Logout</div>
+            <a class="ui inverted violet button" href="/logout">Logout</a>
           </div>
         </div>
       </div>
