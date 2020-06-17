@@ -31,6 +31,16 @@ module.exports = function(app) {
     });
 
     app.post("/api/sellitem", (req, res) => {
-
+        db.Item.insertOne({
+            item_name: req.body.item_name,
+            category: req.body.category,
+            quantity: req.body.quantity,
+            description: req.body.description,
+            price: req.body.price
+        }).then(function (dbItem) {
+            res.json(dbItem);
+        }).catch(function(err) {
+            res.json(err);
+        })
     })
 }
