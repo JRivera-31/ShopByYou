@@ -6,7 +6,7 @@
 var Sequelize = require("sequelize");
 
 //database name, user, password for mysql
-const sequelize = new Sequelize("storeByYou_db", "root", "sprinkles", {
+const sequelize = new Sequelize("shopByYou_db", "root", "sprinkles", {
   host: "localhost",
   port: 3306,
   dialect: "mysql",
