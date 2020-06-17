@@ -33,4 +33,14 @@ module.exports = function(app) {
     app.post("/api/sellitem", (req, res) => {
 
     })
+
+    app.get("/api/categories", (req,res) => {
+        db.Item.findAll({
+            where: {
+                category: req.params.category
+              }
+        }).then (function(cat){
+            res.json(cat);
+        })
+    })
 }
