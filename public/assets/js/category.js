@@ -1,4 +1,4 @@
-// $(function() {
+$(function() {
+const category = $("#categories")
 
-
-// };
+};
