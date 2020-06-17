@@ -1,7 +1,11 @@
-  //***************************************/
-    //***METHOD ONE FOR LOCAL STORAGE********/
-    //************************************* */
-    //local storage for cart
+const { json } = require("express");
+const db=
+$(function () {
+//***************************************/
+//***METHOD ONE FOR LOCAL STORAGE********/
+//************************************* */
+
+    //storing items into array;
     let cart = [];
     //check whether key cart is avalible in localStorage object 
     if (localStorage.cart) {
@@ -54,3 +58,35 @@
     //***METHOD TWO FOR LOCAL STORAGE********/
     //************************************* */
     //we can append the elements in the handlebars to appear in cart
+
+    function saveCart() {
+        localStorage.setItem("shoppingCart", JSON.stringify(cart));
+    }
+    //load cart
+    function loadCart() {
+        cart = JSON.parse(localStorage.getItem("shoppingCart"));
+    }
+    if (localStorage.getItem("shoppingCart") != null) {
+        loadCart();
+    }
+    let obj = {};
+})
+
+//on click listener from member_shop/guest_shop
+$(".ui inverted purple button").on("click", function (event) {
+    event.preventDefault(); //might not need since it's not in a form
+
+    //using data attribute for add to cart button, subject to change
+    let id = $(this).data("id"); //item 
+    let addCart = $(this).data("add-cart");
+
+   //updating the item to put in cart
+    $.ajax("/api/cart/", {
+        type:"PUT",
+       
+    }).then (function() {
+        console.log("added item to cart" + );
+        location.reload();
+    })
+})
+
