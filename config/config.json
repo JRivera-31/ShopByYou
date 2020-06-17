@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": "root",
-    "database": "storeByYou_db",
+    "password": "sprinkles",
+    "database": "shopByYou_db",
     "host": "127.0.0.1",
     "dialect": "mysql",
     "operatorsAliases": false
