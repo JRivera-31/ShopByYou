@@ -29,7 +29,7 @@ $(function() {
         password: password
       })
         .then(function() {
-          window.location.replace("/member-shop");
+          window.location.replace("/shop");
           // If there's an error, log the error
         })
         .catch(function(err) {
