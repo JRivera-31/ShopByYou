@@ -17,8 +17,6 @@ module.exports = function(app) {
         });
     });
 
-  
-
     app.get("/api/user_data", (req, res) => {
         if(!req.user){
             res.json({});
@@ -29,6 +27,13 @@ module.exports = function(app) {
             });
         }
     });
+    //get all items
+    app.get("/api/item", function(req, res) {
+        db.Item.findAll({}).then(function(dbItem) {
+            res.json(dbItem);
+        })
+    })
+
     //adding item to sell in app
     app.post("/api/item", (req, res) => {
         db.Item.create({
@@ -44,14 +49,13 @@ module.exports = function(app) {
             res.status(401).json(err);
         })
     });
+
     //move item to cart
     app.put("/api/item", function(req, res) {
-        db.Item.update({
+        db.Item.updateOne({
             item_name: req.body.item_name,
-            category: req.body.category,
             quantity: req.body.quantity,
             //placeholder for image
-            description: req.body.description,
             price: req.body.price
         }).then(function (dbItem) {
             res.json(dbItem);
@@ -59,7 +63,6 @@ module.exports = function(app) {
             res.status(401).json(err);
         });
     });
-
     //remove item from cart
     app.delete("/api/item/:id", function(req, res) {
         db.Item.destroy({
@@ -67,5 +70,5 @@ module.exports = function(app) {
         }).then(function(dbItem) {
             res.json(dbItem);
         });
-    })
+    });
 }
