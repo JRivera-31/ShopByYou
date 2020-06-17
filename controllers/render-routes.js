@@ -7,7 +7,7 @@ const router = express.Router();
 router.get("/", (req, res) => {
   res.render("login");
   if (req.user) {
-    res.redirect("/member-shop");
+    res.redirect("/shop");
   }
 });
 
@@ -15,15 +15,13 @@ router.get("/signup", (req, res) => {
   res.render("signup");
 });
 
-router.get("/member-shop", isAuthenticated, (req, res) =>{
+router.get("/shop", isAuthenticated, (req, res) =>{
   if (req.user) {
-    res.render("member_shop",{user: req.user});
+    res.render("shop",{user: req.user});
   } 
 });
 
-router.get("/guest-shop", (req, res) => {
-    res.render("guest_shop");
-})
+
 
 router.get("/category", (req, res) => {
   res.render("category");
