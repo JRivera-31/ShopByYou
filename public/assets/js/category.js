@@ -1,4 +1,5 @@
 $(function() {
 const category = $("#categories")
 
+
 };

@@ -1,76 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8" />
-    <!-- css style sheet  -->
-    <link rel="stylesheet" href="/assets/css/style.css" type="text/css" />
-    <title>ShopByYou</title>
-    <!-- semantic css cdn  -->
-    <link rel="stylesheet" type="text/css"
-      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />
-    <!-- tab icon link  -->
-    <link rel="shortcut icon" type="image/png"
-      href="https://cdn.pixabay.com/photo/2017/07/08/19/32/symbol-2485366_1280.png" />
-    <!-- jQuery  -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <!-- css style sheet  -->
+  <link rel="stylesheet" href="/assets/css/style.css" type="text/css" />
+  <title>ShopByYou</title>
+  <!-- semantic css cdn  -->
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />
+  <!-- tab icon link  -->
+  <link rel="shortcut icon" type="image/png"
+    href="https://cdn.pixabay.com/photo/2017/07/08/19/32/symbol-2485366_1280.png" />
+  <!-- jQuery  -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
 
-  <body>
+<body>
 
-    <nav class="ui fixed inverted menu">
-      <div class="ui container">
-        <div class="header item">ShopByYou</div>
-        <a href="/shop" class="item">Home</a>
-        <div class="ui simple dropdown item">
-          <a href="/category"> Categories <i class="dropdown icon"></i></a>
-          <div class="menu" id="mainCategories">
-            <a class="item" value="clothing">Clothing</a>
-            <a class="item" value="household">Household</a>
-            <a class="item" value="accessories">Accessories</a>
+  <nav class="ui fixed inverted menu">
+    <div class="ui container">
+      <div class="header item">ShopByYou</div>
+      <a href="/shop" class="item">Home</a>
+      <div class="ui simple dropdown item">
+        <a href="/category"> Categories <i class="dropdown icon"></i></a>
+          <select class="menu" id="mainCategories">
+            <option class="item" value="clothing">Clothing</option>
+            <option class="item" value="household">Household</option>
+            <option class="item" value="accessories">Accessories</option>
             <div class="divider"></div>
-            <a class="item" value="auto">Auto</a>
-            <a class="item" value="electronics">Electronics</a>
-            <a class="item" value="services">Services</a>
+            <option class="item" value="auto">Auto</option>
+            <option class="item" value="electronics">Electronics</option>
+            <option class="item" value="services">Services</option>
             <div class="divider"></div>
-            <a class="item" value="outdoors">Outdoors</a>
-            <a class="item" value="sports">Sports</a>
-            <a class="item" value="pets">Pets</a>
-          </div>
-        </div>
-        {{#if user}}
-          <a href="/favourite" class="item">Favorites</a>
-          <a href="/sell" class="item">Sell</a>
-        {{/if}}
-        <div class="right menu">
-          {{#if user}}
-            <div class="header item">Welcome: {{ user.email }} </div>
-          {{/if}}
-          <a href="/cart" class="item">
-            <i class="shopping cart icon"></i>Shopping Cart</a>
-          {{#unless user}}
-            <div class="item">
-              <a class="ui inverted primary button" href="/">Log in</a>
-            </div>
-          {{else}}
-            <div class="item">
-              <a class="ui inverted violet button" href="/logout">Logout</a>
-            </div>
+            <option class="item" value="outdoors">Outdoors</option>
+            <option class="item" value="sports">Sports</option>
+            <option class="item" value="pets">Pets</option>
+          </select>
         </div>
       </div>
-      {{/unless}}
-    </nav>
-    {{{body}}}
-    <footer class="ui inverted vertical footer segment" id="footer2">
-      <div class="ui small header centered"> Copyright 2020</div>
-      <a class="ui right" href="https://github.com/lynseahoss" target="blank"> <i class="fab fa-github"></i></a>
-    </footer>
-    <!-- jQuery cdn  -->
+      {{#if user}}
+      <a href="/favourite" class="item">Favorites</a>
+      <a href="/sell" class="item">Sell</a>
+      {{/if}}
+      <div class="right menu">
+        {{#if user}}
+        <div class="header item">Welcome: {{ user.email }} </div>
+        {{/if}}
+        <a href="/cart" class="item">
+          <i class="shopping cart icon"></i>Shopping Cart</a>
+        {{#unless user}}
+        <div class="item">
+          <a class="ui inverted primary button" href="/">Log in</a>
+        </div>
+        {{else}}
+        <div class="item">
+          <a class="ui inverted violet button" href="/logout">Logout</a>
+        </div>
+      </div>
+    </div>
+    {{/unless}}
+  </nav>
+  {{{body}}}
+  <footer class="ui inverted vertical footer segment" id="footer2">
+    <div class="ui small header centered"> Copyright 2020</div>
+    <a class="ui right" href="https://github.com/lynseahoss" target="blank"> <i class="fab fa-github"></i></a>
+  </footer>
+  <!-- jQuery cdn  -->
 
-    <!-- semantic jQuery cdn  -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
-    <script src="/assets/js/signup.js"></script>
-    <script src="/assets/js/login.js"></script>
-  </body>
+  <!-- semantic jQuery cdn  -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+  <script src="/assets/js/signup.js"></script>
+  <script src="/assets/js/login.js"></script>
+</body>
 
 </html>
