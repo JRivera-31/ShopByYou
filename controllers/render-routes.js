@@ -16,9 +16,7 @@ router.get("/signup", (req, res) => {
 });
 
 router.get("/shop", (req, res) =>{
-
-    res.render("shop", {user: req.user});
-  
+  res.render("shop", {user: req.user});
 });
 
 router.get("/category", (req, res) => {
@@ -38,8 +36,7 @@ router.get("/sell", (req, res) => {
 });
 
 
-router.get("/logout", function (req, res) {
-  
+router.get("/logout", function (req, res) { 
   req.logout();
   res.redirect("/");
 });

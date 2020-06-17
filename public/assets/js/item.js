@@ -46,7 +46,10 @@ $(function () {
             data: formData,
             contentType: false,
             processData: false
-        }).then((results)=>console.log(results))
+        }).then((results) => {
+            console.log(results)
+            
+        })
         .catch(err=> console.log(err))
     });
 
