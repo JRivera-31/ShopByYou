@@ -12,12 +12,12 @@
       <div class="ui center aligned container">
         <div class="ui two column centered grid">
           <div class="column">
-            <form class="ui large form" id="sellItem" action="/uploads" enctype="multipart/form-data" method="POST"> 
+            <form class="ui large form" id="sellItem"  enctype="multipart/form-data" method="POST"> 
               <div class="ui inverted stacked segment">
                 <div class="field">
                   <div class="ui left icon input">
                     <i class="tag icon"></i>
-                    <input type="text" name="item" class="item" placeholder="Name of Item" />
+                    <input type="text" name="item" class="item itemName" placeholder="Name of Item" />
                   </div>
                 </div>
                 <div class="field">
@@ -49,7 +49,7 @@
                 </div>
              <div class="field">
                   <label>Description of Item</label>
-                  <textarea></textarea>
+                  <textarea class="description"></textarea>
                 </div>
                 <div class="field">
                     <div class="ui simple dropdown item">
@@ -72,4 +72,4 @@
         </div>
       </div>
     </main>
-   
+   <script src="/assets/js/item.js"></script>
