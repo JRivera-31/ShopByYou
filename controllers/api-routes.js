@@ -44,9 +44,24 @@ module.exports = function(app) {
             res.status(401).json(err);
         })
     });
-    
+    //move item to cart
+    app.put("/api/item", function(req, res) {
+        db.Item.update({
+            item_name: req.body.item_name,
+            category: req.body.category,
+            quantity: req.body.quantity,
+            //placeholder for image
+            description: req.body.description,
+            price: req.body.price
+        }).then(function (dbItem) {
+            res.json(dbItem);
+        }).catch(function(err) {
+            res.status(401).json(err);
+        });
+    });
+
     //remove item from cart
-    app.delete("/api/cart/:id", function(req, res) {
+    app.delete("/api/item/:id", function(req, res) {
         db.Item.destroy({
             where: {id: req.params.id}
         }).then(function(dbItem) {
