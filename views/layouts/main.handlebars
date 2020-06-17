@@ -19,8 +19,7 @@
 <nav class="ui fixed inverted menu">
       <div class="ui container">
         <div class="header item">ShopByYou</div>
-         {{#if user}}
-        <a href="/member-shop" class="item">Home</a>
+        <a href="/shop" class="item">Home</a>
         <div class="ui simple dropdown item">
           <a href="/category"> Categories <i class="dropdown icon"></i></a>
           <div class="menu">
@@ -31,37 +30,33 @@
             <a class="item" href="#">Accessories</a>
           </div>
         </div>
+        {{#if user}}
         <a href="/favourite" class="item">Favorites</a>
         <a href="/sell" class="item">Sell</a>
+        {{/if}}
         <div class="right menu">
-          <div class="header item">Welcome: {{ email }} </div>
+          {{#if user}}
+          <div class="header item">Welcome: {{ user.email }} </div>
+          {{/if}}
           <a href="/cart" class="item">
             <i class="shopping cart icon"></i>Shopping Cart</a>
+          {{#unless user}}
+          <div class="item">
+            <a class="ui inverted primary button" href="/">Log in</a>
+          </div>
+          {{else}}
           <div class="item">
             <a class="ui inverted violet button" href="/logout">Logout</a>
           </div>
         </div>
-        {{else}}
-    
-       <a href="/guest-shop" class="item">Home</a>
-        
-           <div class="right menu">
-          <div class="item">
-            <a class="ui inverted primary button" href="/">Log in</a>
-          </div>
-          <div class="item">
-            <a class="ui inverted violet button" href="/signup">Sign Up</a>
-          </div>
-          <a href="/cart" class="item">
-            <i class="shopping cart icon"></i>Shopping Cart</a>
-          <div class="item">
        </div>
-       {{/if}}
-      </div>
+       {{/unless}}
     </nav>
-
-
     {{{body}}}
+    <footer class="ui inverted vertical footer segment" id="footer2">
+          <div class="ui small header centered"> Copyright 2020</div>
+          <a class="ui right" href="https://github.com/lynseahoss" target="blank"> <i class="fab fa-github"></i></a>
+        </footer>
      <!-- jQuery cdn  -->
   
     <!-- semantic jQuery cdn  -->

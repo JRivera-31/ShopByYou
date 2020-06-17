@@ -5,44 +5,41 @@ const router = express.Router();
 
 // =======  Render Routes =======
 router.get("/", (req, res) => {
-  res.render("login");
   if (req.user) {
-    res.redirect("/member-shop");
+    return res.redirect("/shop");
   }
+  res.render("login", {user: req.user});
 });
 
 router.get("/signup", (req, res) => {
-  res.render("signup");
+  res.render("signup", {user: req.user});
 });
 
-router.get("/member-shop", isAuthenticated, (req, res) =>{
-  if (req.user) {
-    res.render("member_shop",{user: req.user});
-  } 
-});
+router.get("/shop", (req, res) =>{
 
-router.get("/guest-shop", (req, res) => {
-    res.render("guest_shop");
-})
+    res.render("shop", {user: req.user});
+  
+});
 
 router.get("/category", (req, res) => {
-  res.render("category");
+  res.render("category", {user: req.user});
 });
 
 router.get("/favourite", (req, res) => {
-  res.render("favourite");
+  res.render("favourite", {user: req.user});
 });
 
 router.get("/cart", (req, res) => {
-  res.render("cart");
+  res.render("cart", {user: req.user});
 });
 
 router.get("/sell", (req, res) => {
-  res.render("sell");
+  res.render("sell", {user: req.user});
 });
 
 
 router.get("/logout", function (req, res) {
+  
   req.logout();
   res.redirect("/");
 });
