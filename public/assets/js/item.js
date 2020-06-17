@@ -10,7 +10,7 @@ $(function () {
         event.preventDefault();
         const itemName = $('.itemName').val().trim();
         const price = $('.price').val().trim();
-        const category = $('.category').val();
+        const category = $('#categories').val();
         const quantity = $('.quantity').val().trim();
         const description = $('.description').val().trim();
         const file = $("#userImg")[0].files[0]
