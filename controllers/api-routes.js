@@ -27,12 +27,23 @@ module.exports = function(app) {
             });
         }
     });
+
     //get all items
     app.get("/api/items", function(req, res) {
         db.Item.findAll({}).then(function(dbItem) {
             res.json(dbItem);
         });
     });
+    //get all items from specific categories
+    app.get("api/categories", function(req, res) {
+        db.Item.findAll({
+            where: {
+                category: req.params.category
+            }
+        }).then(function(dbItem) {
+            res.json(dbItem);
+        });
+    })
 
     //adding item to sell in app
     app.post("/api/items", (req, res) => {
@@ -62,6 +73,7 @@ module.exports = function(app) {
     //         res.status(401).json(err);
     //     });
     // });
+
     //remove item from cart
     app.delete("/api/items/:id", function(req, res) {
         db.Item.destroy({
