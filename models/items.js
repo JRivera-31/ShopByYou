@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     category: {
       type: DataTypes.STRING,
-      allowNull: false
+      // allowNull: false
     },
     quantity: {
       type: DataTypes.INTEGER,
@@ -17,10 +17,10 @@ module.exports = function(sequelize, DataTypes) {
         isInt: true
       }
     },
-    // image: {
-    //   filePath: DataTypes.STRING,
-    //   allowNull: false
-    // },
+    image: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     description: {
       type: DataTypes.STRING,
       allowNull: false
