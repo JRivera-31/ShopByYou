@@ -5,22 +5,6 @@ const app = express();
 const passport = require("./config/passport.js")
 // Path and multer for image uploading
 const path = require("path")
-const multer = require("multer")
-// env
-require("dotenv").config()
-
-// Google cloud storage
-import * as MulterGoogleCloudStorage from "multer-google-storage"
-
-//Init upload
-const uploadHandler = multer({
-  storage: new MulterGoogleCloudStorage(),
-})
-
-app.post("/uploads", uploadHandler.single("userImg"), (req, res) => {
-  console.log(req.files)
-  res.json(req.files)
-})
 
 //port
 const PORT = process.env.PORT || 8080;
@@ -52,8 +36,9 @@ const e = require("express");
 
 
 //Syncing sequelize models and then starting express server
-db.sequelize.sync().then(function() {
+db.sequelize.sync({force:true}).then(function() {
   app.listen(PORT, function() {
-    console.log("App listening on PORT " + PORT);
+    console.log("🚀 App listening on PORT " + PORT);
   });
 });
+
