@@ -17,7 +17,7 @@ const uploadHandler = multer({
   storage: new MulterGoogleCloudStorage(),
 })
 
-app.post("/uploads", uploadHandler.any(), (req, res) => {
+app.post("/uploads", uploadHandler.single("userImg"), (req, res) => {
   console.log(req.files)
   res.json(req.files)
 })
