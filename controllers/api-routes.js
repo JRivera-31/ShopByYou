@@ -30,8 +30,7 @@ module.exports = function(app) {
         }
     });
 
+    app.post("/api/sellitem", (req, res) => {
 
-    app.post("/api/sell", (req, res) => {
-        
     })
 }
