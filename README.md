@@ -10,11 +10,10 @@ This project is a simple application that allows....  The application is deploye
 
 [ShopByYou Heroku Application](https://young-earth-96498.herokuapp.com/)
 
-![ShopByYou](/assets/images/.gif)
+![ShopByYou](public/assets/images/shopHome.png)
 
 ## Table of Contents
   * [Installation](#installation)
-  * [Tests](#tests)
   * [Usage](#usage)
   * [Project Technology](#project-technology)
   * [Screenshots of Application](#screenshots-of-application)
@@ -26,13 +25,6 @@ To install, run following command in terminal:
   
 ```
 npm i
-```
-
-## Tests
-To test, run the following command in terminal:
-
-```
-npm test
 ```
 
   ## Usage
@@ -63,6 +55,7 @@ Libraries
 - [Node.js](nodejs.org)
 
 npm Packages
+- [multer](https://www.npmjs.com/package/multer)
 - [express](https://www.npmjs.com/package/express)
 - [express-session](https://www.npmjs.com/package/express-session)
 - [mysql2](https://www.npmjs.com/package/mysql2)
