@@ -29,18 +29,28 @@ module.exports = function(app) {
             });
         }
     });
-
-    app.post("/api/sellitem", (req, res) => {
-        db.Item.insertOne({
+    //adding item to sell in app
+    app.post("/api/item", (req, res) => {
+        db.Item.create({
             item_name: req.body.item_name,
             category: req.body.category,
             quantity: req.body.quantity,
+            //placeholder for image
             description: req.body.description,
             price: req.body.price
         }).then(function (dbItem) {
             res.json(dbItem);
         }).catch(function(err) {
-            res.json(err);
+            res.status(401).json(err);
         })
+    });
+    
+    //remove item from cart
+    app.delete("/api/cart/:id", function(req, res) {
+        db.Item.destroy({
+            where: {id: req.params.id}
+        }).then(function(dbItem) {
+            res.json(dbItem);
+        });
     })
 }
