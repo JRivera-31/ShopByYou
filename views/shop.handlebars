@@ -1,6 +1,7 @@
     <header class="ui center aligned container">
       <div class="ui sizer vertical segment">
         <div class="ui huge header">ShopByYou</div>
+        <div class="alert"></div>
       </div>
     </header>
      <main class="ui center aligned container">
@@ -35,15 +36,12 @@
                   </div>
                 </div>
               </div>
-              <div class="ui two bottom attached buttons">
+              <div class="ui bottom attached buttons">
                 <button type="button" data-id="{{dataValues.id}}" id="purchasebutton" class="ui inverted purple button">
-                  <i class="add icon"></i>
+                  <i class="dollar sign icon"></i>
                   Purchase
                 </button>
-                <button type="submit" class="ui inverted pink button">
-                  <i class="heart outline like icon"></i>
-                  Favorite
-                </button>
+                
               </div>
             </div>
           </div>
@@ -55,8 +53,6 @@
     <script>
       $("#purchasebutton").on("click", function (event) {
         let id = $(this).data("id")
-        
-        console.log(id)
 
         $.ajax({
             type: "delete",
