@@ -1,5 +1,5 @@
 # ShopByYou
-![npm](https://img.shields.io/npm/v/inquirer?style=plastic&color=ff69b4) 
+![npm](https://img.shields.io/npm/v/inquirer?style=plastic&color=ff69b4) ![GitHub contributors](https://img.shields.io/github/contributors/JRivera-31/ShopByYou?style=plastic&color=ff69b4)
 
 ## Project Description
 

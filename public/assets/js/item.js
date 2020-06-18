@@ -46,9 +46,15 @@ $(function () {
             data: formData,
             contentType: false,
             processData: false
-        }).then((results) => {
+        }).then((results)=>{
             console.log(results)
+            window.location.replace("/shop")
+            return false 
         })
+        // if(typeof price != "number") {
+        //     return alert("Price must be a number!");
+        // }
+        // createItem(userItem);
         .catch(err=> console.log(err))
     });
 
