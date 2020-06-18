@@ -25,6 +25,16 @@ router.get("/category", (req, res) => {
   res.render("category", {user: req.user});
 });
 
+router.get("/category/:category", (req, res) => {
+  db.Item.findAll({
+    where: {
+      category: req.params.category
+    }
+  }).then(items => {
+    res.render("category", { items });
+  });
+});
+
 router.get("/favourite", (req, res) => {
   res.render("favourite", {user: req.user});
 });

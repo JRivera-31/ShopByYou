@@ -21,22 +21,19 @@
     <div class="ui container">
       <div class="header item">ShopByYou</div>
       <a href="/shop" class="item">Home</a>
-      <div class="ui simple dropdown item">
-        <a href="/category"> Categories <i class="dropdown icon"></i></a>
-        <select class="menu" id="mainCategories">
-          <option class="item" value="clothing">Clothing</option>
-          <option class="item" value="household">Household</option>
-          <option class="item" value="accessories">Accessories</option>
-          <div class="divider"></div>
-          <option class="item" value="auto">Auto</option>
-          <option class="item" value="electronics">Electronics</option>
-          <option class="item" value="services">Services</option>
-          <div class="divider"></div>
-          <option class="item" value="outdoors">Outdoors</option>
-          <option class="item" value="sports">Sports</option>
-          <option class="item" value="pets">Pets</option>
-        </select>
-      </div>
+     
+       <select id="mainCategories" class="ui inverted dropdown" >
+                <option value="">Categories</option>
+                <option class="item" value="clothing"><a href="/category">Clothing</a></option>
+                  <option class="item" value="household">Household</option>
+                   <option class="item" value="accessories">Accessories</option>
+                   <option class="item" value="auto">Auto</option>
+                  <option class="item" value="electronics">Electronics</option>
+                  <option class="item" value="services">Services</option>
+                  <option class="item" value="outdoors">Outdoors</option>
+                  <option class="item" value="sports">Sports</option>
+                  <option class="item" value="pets">Pets</option>
+              </select>
       {{#if user}}
       <a href="/favourite" class="item">Favorites</a>
       <a href="/sell" class="item">Sell</a>
@@ -71,6 +68,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
   <script src="/assets/js/signup.js"></script>
   <script src="/assets/js/login.js"></script>
+  <script src="/assets/js/category.js"></script>
+  
 </body>
 
 </html>
