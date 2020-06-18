@@ -46,7 +46,6 @@ $(function () {
             data: formData,
             contentType: false,
             processData: false
-<<<<<<< HEAD
         }).then((results)=>{
             console.log(results)
             window.location.replace("/shop")
@@ -56,11 +55,6 @@ $(function () {
         //     return alert("Price must be a number!");
         // }
         // createItem(userItem);
-=======
-        }).then((results) => {
-            console.log(results)
-        })
->>>>>>> 14468619bd5171844f1ba803d540ef1a5d24ce2b
         .catch(err=> console.log(err))
     });
 
