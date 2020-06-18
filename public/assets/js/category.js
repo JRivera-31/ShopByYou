@@ -10,12 +10,14 @@ $(function() {
     })
 
     function choooseCategory(category){
-        $.get(`/api/categories/${category}`)
+        $.get(`/api/category/${category}`)
         .then(items => {
             console.log(items);
+            window.location.replace("/category")
         })
         .catch(function(err) {
             console.log(err);
         });
+
     }
 });
