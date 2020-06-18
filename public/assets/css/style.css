@@ -10,3 +10,7 @@ header{
   height: 35px;
   z-index: 2;
 }
+
+.empty-space {
+  height: 10%;
+}

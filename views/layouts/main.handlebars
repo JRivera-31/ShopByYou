@@ -39,22 +39,29 @@
         </div>
        
         {{#if user}}
-        <div class="header item">Welcome: {{ user.email }} </div>
+          <a href="/favourite" class="item">Favorites</a>
+          <a href="/sell" class="item">Sell</a>
         {{/if}}
-        <a href="/cart" class="item">
-          <i class="shopping cart icon"></i>Shopping Cart</a>
-        {{#unless user}}
-        <div class="item">
-          <a class="ui inverted primary button" href="/">Log in</a>
-        </div>
-        {{else}}
-        <div class="item">
-          <a class="ui inverted violet button" href="/logout">Logout</a>
+        <div class="right menu">
+          {{#if user}}
+            <div class="header item">Welcome: {{ user.email }} </div>
+          {{/if}}
+          <a href="/cart" class="item">
+            <i class="shopping cart icon"></i>Shopping Cart</a>
+          {{#unless user}}
+            <div class="item">
+              <a class="ui inverted primary button" href="/">Log in</a>
+            </div>
+          {{else}}
+            <div class="item">
+              <a class="ui inverted violet button" href="/logout">Logout</a>
+            </div>
         </div>
       </div>
       {{/unless}}
     </nav>
     {{{body}}}
+    <div class="empty-space"></div>
     <footer class="ui inverted vertical footer segment" id="footer2">
       <div class="ui small header centered"> &copy; 2020</div>
       <a class="ui right" href="https://github.com/lynseahoss" target="blank"> <i class="fab fa-github"></i></a>
