@@ -17,7 +17,7 @@ const uploadHandler = multer({
 console.log(process.env.GCS_BUCKET);
 module.exports = function (app) {
   // Authenitcate login
-    app.post("/api/login", passport.authenticate("local"), (req, res) => {
+  app.post("/api/login", passport.authenticate("local"), (req, res) => {
     res.json(req.user);
   });
   // Create new user
@@ -59,10 +59,17 @@ module.exports = function (app) {
       });
   });
 
-    // Get all items
-    app.get("/api/items", (req, res) => {
-      db.Item.findAll({})
-      .then(items => res.json(items))
-    })  
-
+  app.get("/api/categories/:value", (req, res) => {
+    db.Item.findAll({
+      where: {
+        category: req.params.category,
+      },
+    }).then(function (cat) {
+      res.json(cat);
+    });
+  });
+  // Get all items
+  app.get("/api/items", (req, res) => {
+    db.Item.findAll({}).then((items) => res.json(items));
+  });
 };
