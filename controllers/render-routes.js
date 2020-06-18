@@ -2,6 +2,7 @@ const express = require("express");
 const passport = require("../config/passport");
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 const router = express.Router();
+const db = require("../models");
 
 // =======  Render Routes =======
 router.get("/", (req, res) => {
@@ -16,9 +17,9 @@ router.get("/signup", (req, res) => {
 });
 
 router.get("/shop", (req, res) =>{
-
-    res.render("shop", {user: req.user});
-  
+  db.Item.findAll({}).then(items => {
+    res.render("shop", {"items": items, "user": req.user})
+  })
 });
 
 router.get("/category", (req, res) => {
@@ -38,8 +39,7 @@ router.get("/sell", (req, res) => {
 });
 
 
-router.get("/logout", function (req, res) {
-  
+router.get("/logout", function (req, res) { 
   req.logout();
   res.redirect("/");
 });
