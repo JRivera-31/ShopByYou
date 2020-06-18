@@ -1,11 +1,7 @@
 {
   "development": {
     "username": "root",
-<<<<<<< HEAD
     "password": "root",
-=======
-    "password": "rootroot",
->>>>>>> 14468619bd5171844f1ba803d540ef1a5d24ce2b
     "database": "shopByYou_db",
     "host": "127.0.0.1",
     "dialect": "mysql",
