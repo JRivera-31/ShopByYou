@@ -78,17 +78,19 @@ module.exports = function (app) {
     blobStream.end(req.file.buffer);
   });
 
-  app.get("/api/categories/:value", (req, res) => {
+  app.get("/api/categories/:category", (req, res) => {
     db.Item.findAll({
       where: {
         category: req.params.category,
       },
-    }).then(function (cat) {
-      res.json(cat);
+    }).then(function (items) {
+      res.json(items);
     });
   });
+
   // Get all items
   app.get("/api/items", (req, res) => {
     db.Item.findAll({}).then((items) => res.json(items));
   });
+
 };
