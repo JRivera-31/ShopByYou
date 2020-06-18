@@ -1,6 +1,7 @@
     <header class="ui center aligned container">
       <div class="ui sizer vertical segment">
         <div class="ui huge header">ShopByYou</div>
+        <div class="alert"></div>
       </div>
     </header>
      <main class="ui center aligned container">
@@ -52,8 +53,6 @@
     <script>
       $("#purchasebutton").on("click", function (event) {
         let id = $(this).data("id")
-        
-        console.log(id)
 
         $.ajax({
             type: "delete",
