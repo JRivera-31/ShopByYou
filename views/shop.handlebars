@@ -12,7 +12,7 @@
                 <div class="header">
                   {{#each items}} 
                   <img
-                    src="/upload/{{dataValues.image}}"
+                    src="../uploads/{{dataValues.image}}"
                     class="ui right spaced image"
                   />
                 <h3>Item Name: {{dataValues.item_name}}</h3>
@@ -33,7 +33,6 @@
                   <div class="meta ui left aligned">
                     <span class="date">Date Posted: {{dataValues.createdAt}}</span>
                   </div>
-                  {{/each}}
                 </div>
               </div>
               <div class="ui two bottom attached buttons">
@@ -47,6 +46,7 @@
                 </button>
               </div>
             </div>
+            {{/each}}
           </div>
         </div>
       </div>
