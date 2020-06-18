@@ -6,13 +6,13 @@
      <main class="ui center aligned container">
       <div class="ui four cards">
         <div class="ui stackable four column grid">
+                  {{#each items}} 
           <div class="column">
             <div class="ui card">
               <div class="content">
                 <div class="header">
-                  {{#each items}} 
                   <img
-                    src="/upload/{{dataValues.image}}"
+                    src="../uploads/{{dataValues.image}}"
                     class="ui right spaced image"
                   />
                 <h3>Item Name: {{dataValues.item_name}}</h3>
@@ -33,7 +33,6 @@
                   <div class="meta ui left aligned">
                     <span class="date">Date Posted: {{dataValues.createdAt}}</span>
                   </div>
-                  {{/each}}
                 </div>
               </div>
               <div class="ui two bottom attached buttons">
@@ -48,6 +47,7 @@
               </div>
             </div>
           </div>
+                  {{/each}}
         </div>
       </div>
     </main>
