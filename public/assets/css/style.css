@@ -14,3 +14,8 @@ header{
 .empty-space {
   height: 10%;
 }
+
+img{
+  height: 225px;
+  width: 350px;
+}
