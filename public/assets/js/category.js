@@ -9,7 +9,7 @@ $(function() {
     })
 
     function choooseCategory(category){
-        $.get(`/api/category/${category}`)
+        $.get(`/api/categories/${category}`)
         .then(items => {
             console.log(items);
             window.location.replace("/categories/" + category)

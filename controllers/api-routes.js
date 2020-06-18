@@ -78,7 +78,7 @@ module.exports = function (app) {
     blobStream.end(req.file.buffer);
   });
 
-  app.get("/api/category/:category", (req, res) => {
+  app.get("/api/categories/:category", (req, res) => {
     db.Item.findAll({
       where: {
         category: req.params.category,
