@@ -47,7 +47,6 @@ router.get("/sell", (req, res) => {
   res.render("sell", {user: req.user});
 });
 
-
 router.get("/logout", function (req, res) { 
   req.logout();
   res.redirect("/");
