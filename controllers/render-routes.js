@@ -35,16 +35,8 @@ router.get("/categories/:category", (req, res) => {
   });
 });
 
-router.get("/favourite", (req, res) => {
-  res.render("favourite", {user: req.user});
-});
-
-router.get("/cart", (req, res) => {
-  res.render("cart", {user: req.user});
-});
-
 router.get("/sell", (req, res) => {
-  res.render("sell", {user: req.user});
+  res.render("sell", { user: req.user });
 });
 
 router.get("/logout", function (req, res) { 
