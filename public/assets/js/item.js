@@ -24,9 +24,9 @@ $(function () {
         console.log('here')
 
         // Validate if price is not a number
-        if(typeof price != "number") {
-            return alert("Price must be a number!");
-        }
+        // if(typeof price != "number") {
+        //     return alert("Price must be a number!");
+        // }
 
         // Create object for values
         let userItem = {
@@ -48,7 +48,6 @@ $(function () {
             processData: false
         }).then((results) => {
             console.log(results)
-            
         })
         .catch(err=> console.log(err))
     });
