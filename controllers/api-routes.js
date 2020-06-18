@@ -8,7 +8,7 @@ const { Storage } = require("@google-cloud/storage");
 const uuid = require("uuid");
 const uuidv1 = uuid.v1;
 
-const storage = new Storage();
+const storage = new Storage({ projectId: process.env.GCLOUD_PROJECT, credentials: { client_email: process.env.GCLOUD_CLIENT_EMAIL, private_key: process.env.GCLOUD_PRIVATE_KEY } });
 const multer = Multer({
   storage: Multer.memoryStorage(),
   limits: {
@@ -16,13 +16,7 @@ const multer = Multer({
   },
 });
 const bucket = storage.bucket(process.env.GCS_BUCKET);
-//const uploadHandler = multer({ storage: storage });
 
-//Init upload
-// const uploadHandler = multer({
-//   storage: multerGoogleStorage.storageEngine(),
-// });
-console.log(process.env.GCS_BUCKET);
 module.exports = function (app) {
   // Authenitcate login
   app.post("/api/login", passport.authenticate("local"), (req, res) => {
