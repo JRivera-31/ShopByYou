@@ -22,16 +22,16 @@ router.get("/shop", (req, res) =>{
 });
 
 router.get("/category", (req, res) => {
-  res.render("category", {user: req.user});
+  res.render("category", { user: req.user }); 
 });
 
-router.get("/category/:category", (req, res) => {
+router.get("/categories/:category", (req, res) => {
   db.Item.findAll({
     where: {
       category: req.params.category
     }
   }).then(items => {
-    res.render("category", { items });
+    res.render("category", { items: items });
   });
 });
 
