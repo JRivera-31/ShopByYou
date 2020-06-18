@@ -17,7 +17,6 @@
 </head>
 
 <body>
-
   <nav class="ui fixed inverted menu">
     <div class="ui container">
       <div class="header item">ShopByYou</div>
@@ -38,12 +37,7 @@
             <option class="item" value="pets">Pets</option>
           </select>
         </div>
-      </div>
-      {{#if user}}
-      <a href="/favourite" class="item">Favorites</a>
-      <a href="/sell" class="item">Sell</a>
-      {{/if}}
-      <div class="right menu">
+       
         {{#if user}}
         <div class="header item">Welcome: {{ user.email }} </div>
         {{/if}}

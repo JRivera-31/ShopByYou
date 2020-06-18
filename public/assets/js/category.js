@@ -1,5 +1,5 @@
-$(function() {
-const category = $("#categories")
+// $(function() {
+// const category = $("#categories")
 
 
-};
+// });
