@@ -2,6 +2,11 @@ header{
     margin-top: 5em;
   margin-bottom: 2em;
 }
+#mainCategories{
+  margin-top:0.3em;
+  background-color: black;
+  color:white;
+}
 
 #footer2 {
   position: fixed;
