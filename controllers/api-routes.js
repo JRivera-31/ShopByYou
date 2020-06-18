@@ -16,10 +16,11 @@ const uploadHandler = multer({ storage: storage });
 // })
 console.log(process.env.GCS_BUCKET);
 module.exports = function (app) {
+  // Authenitcate login
   app.post("/api/login", passport.authenticate("local"), (req, res) => {
     res.json(req.user);
   });
-
+  // Create new user
   app.post("/api/signup", (req, res) => {
     db.User.create({
       email: req.body.email,
@@ -32,7 +33,7 @@ module.exports = function (app) {
         res.status(401).json(err);
       });
   });
-
+  // Get user data
   app.get("/api/user_data", (req, res) => {
     if (!req.user) {
       res.json({});
@@ -43,28 +44,32 @@ module.exports = function (app) {
       });
     }
   });
+
+  // Creating new item
   app.post("/api/sellitem", uploadHandler.single("file"), (req, res) => {
     console.log(req.file);
     const itemDetails = JSON.parse(req.body.item);
     itemDetails.image = req.file.filename;
     console.log(itemDetails);
     db.Item.create(itemDetails)
-      .then(() => res.status(200))
+      .then(() => res.json(itemDetails))
       .catch((err) => {
         console.log(err);
         res.status(401).json(err);
       });
   });
 
-
-    app.get("/api/categories/:value", (req,res) => {
-        db.Item.findAll({
-            where: {
-                category: req.params.category
-              }
-        }).then (function(cat){
-            res.json(cat);
-        });
+  app.get("/api/categories/:value", (req, res) => {
+    db.Item.findAll({
+      where: {
+        category: req.params.category,
+      },
+    }).then(function (cat) {
+      res.json(cat);
     });
-
+  });
+  // Get all items
+  app.get("/api/items", (req, res) => {
+    db.Item.findAll({}).then((items) => res.json(items));
+  });
 };
