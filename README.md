@@ -1,5 +1,5 @@
 # ShopByYou
-![npm](https://img.shields.io/npm/v/inquirer?style=plastic&color=ff69b4) ![GitHub contributors](https://img.shields.io/github/contributors/JRivera-31/ShopByYou?style=plastic&color=ff69b4)
+![GitHub license](https://img.shields.io/badge/license-Apache%202.0-pink.svg) ![npm](https://img.shields.io/npm/v/inquirer?style=plastic&color=ff69b4) ![Travis](https://img.shields.io/travis/com/JRivera-31/ShopByYou?logo=travis&style=plastic&color=pink) ![GitHub contributors](https://img.shields.io/github/contributors/JRivera-31/ShopByYou?style=plastic&color=ff69b4)
 
 ## Project Description
 
