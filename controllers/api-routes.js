@@ -1,20 +1,22 @@
 const db = require("../models");
 const passport = require("../config/passport.js");
-const multer = require("multer");
+const Multer = require("multer");
 // env
 require("dotenv").config();
+const { Storage } = require("@google-cloud/storage");
+// Instantiate a storage client
+const uuid = require("uuid");
+const uuidv1 = uuid.v1;
 
-// Google cloud storage
-// const MulterGoogleCloudStorage = require("multer-google-storage")
-// var multerGoogleStorage = require("multer-cloud-storage");
-let storage = require("./storage");
-const uploadHandler = multer({ storage: storage });
+const storage = new Storage({ projectId: process.env.GCLOUD_PROJECT, credentials: { client_email: process.env.GCLOUD_CLIENT_EMAIL, private_key: process.env.GCLOUD_PRIVATE_KEY } });
+const multer = Multer({
+  storage: Multer.memoryStorage(),
+  limits: {
+    fileSize: 5 * 1024 * 1024, // no larger than 5mb, you can change as needed.
+  },
+});
+const bucket = storage.bucket(process.env.GCS_BUCKET);
 
-//Init upload
-// const uploadHandler = multer({
-//     storage: multerGoogleStorage.storageEngine()
-// })
-console.log(process.env.GCS_BUCKET);
 module.exports = function (app) {
   // Authenitcate login
   app.post("/api/login", passport.authenticate("local"), (req, res) => {
@@ -46,17 +48,34 @@ module.exports = function (app) {
   });
 
   // Creating new item
-  app.post("/api/sellitem", uploadHandler.single("file"), (req, res) => {
-    console.log(req.file);
-    const itemDetails = JSON.parse(req.body.item);
-    itemDetails.image = req.file.filename;
-    console.log(itemDetails);
-    db.Item.create(itemDetails)
-      .then(() => res.json(itemDetails))
-      .catch((err) => {
-        console.log(err);
-        res.status(401).json(err);
-      });
+  app.post("/api/sellitem", multer.single("file"), (req, res) => {
+    // Create a new blob in the bucket and upload the file data.
+    const newFileName = uuidv1() + "-" + req.file.originalname;
+    const blob = bucket.file(newFileName);
+    const blobStream = blob.createWriteStream();
+
+    blobStream.on("error", (err) => {
+      //next(err);
+      console.log(err);
+    });
+
+    blobStream.on("finish", () => {
+      // The public URL can be used to directly access the file via HTTP.
+      const publicUrl = `https://storage.googleapis.com/${process.env.GCS_BUCKET}/${blob.name}`;
+      console.log(publicUrl);
+      
+      const itemDetails = JSON.parse(req.body.item);
+      itemDetails.image = publicUrl;
+      console.log(itemDetails);
+      db.Item.create(itemDetails)
+        .then(() => res.json(itemDetails))
+        .catch((err) => {
+          console.log(err);
+          res.status(401).json(err);
+        });
+    });
+
+    blobStream.end(req.file.buffer);
   });
 
   app.get("/api/categories/:value", (req, res) => {
