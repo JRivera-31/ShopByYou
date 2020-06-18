@@ -6,14 +6,14 @@ require("dotenv").config();
 
 // Google cloud storage
 // const MulterGoogleCloudStorage = require("multer-google-storage")
-// var multerGoogleStorage = require("multer-cloud-storage");
+var multerGoogleStorage = require("multer-cloud-storage");
 let storage = require("./storage");
-const uploadHandler = multer({ storage: storage });
+// const uploadHandler = multer({ storage: storage });
 
 //Init upload
-// const uploadHandler = multer({
-//     storage: multerGoogleStorage.storageEngine()
-// })
+const uploadHandler = multer({
+    storage: multerGoogleStorage.storageEngine()
+})
 console.log(process.env.GCS_BUCKET);
 module.exports = function (app) {
   // Authenitcate login
