@@ -26,7 +26,7 @@
                     <span class="price"><strong>Price: </strong>${{dataValues.price}}</span>
                   </div>
                   <div class="ui left aligned">
-                    <span class="quantity"><strong>Quantity: </strong>{{dataValues.quantity}}</span>
+                    <span class="quantity"><strong>Product ID: </strong>{{dataValues.id}}</span>
                   </div>
                   <div class="ui left aligned">
                     <span class="category"><strong>Category: </strong>{{dataValues.category}}</span>
@@ -37,9 +37,9 @@
                 </div>
               </div>
               <div class="ui two bottom attached buttons">
-                <button type="submit" class="ui inverted purple button">
+                <button type="submit" data-id="{{dataValues.id}}" class="ui inverted purple button">
                   <i class="add icon"></i>
-                  Cart
+                  Purchase
                 </button>
                 <button type="submit" class="ui inverted pink button">
                   <i class="heart outline like icon"></i>
@@ -52,3 +52,22 @@
         </div>
       </div>
     </main>
+
+    <script>
+      $("#purchasebutton").on("click", function (event) {
+        let id = $(this).data("id")
+        
+        console.log(id)
+
+        $.ajax({
+            type: "delete",
+            url: "/api/deleteitem/" + id
+        }).then(function(deletedItem) {
+            console.log(console.log(deletedItem))
+            window.location.reload()
+            return alert("Thanks for purchasing!")
+        }).catch(function(err) {
+          console.log(err)
+        })
+    })
+    </script>
