@@ -93,4 +93,17 @@ module.exports = function (app) {
     db.Item.findAll({}).then((items) => res.json(items));
   });
 
+  // Delete item
+  app.delete("/api/deleteitem/:id", (req, res) => {
+    db.Item.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(deleted => {
+      res.json(deleted)
+    }).catch(err => {
+      res.status(500).json(err)
+    })
+  })
+
 };

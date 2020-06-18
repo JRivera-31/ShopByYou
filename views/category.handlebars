@@ -1,10 +1,9 @@
   <header class="ui center aligned container">
       <div class="ui sizer vertical segment">
-        <div class="ui huge header">Categories</div>
+        <div class="ui huge header">Sorted By Chosen Category</div>
         <p></p>
       </div>
     </header>
-
     <main class="ui center aligned container">      
       <div class="ui four cards">
         <div class="ui stackable four column grid">
@@ -17,30 +16,30 @@
                     src="{{dataValues.image}}"
                     class="ui right spaced image"
                   />
-                  <h3>{{dataValues.item_name}}</h3>
+                <h3>{{dataValues.item_name}}</h3>
                 </div>
                 <div class="description ui left aligned">
                   <p>
-                    {{dataValues.description}}
+                      {{dataValues.description}}    
                   </p>
-                  <div class="meta ui left aligned">
-                    <span class="price">Price: {{dataValues.price}} </span>
+                  <div class="ui left aligned">
+                    <span class="price"><strong>Price: </strong>${{dataValues.price}}</span>
                   </div>
-                  <div class="meta ui left aligned">
-                    <span class="quantity">Quantity: {{dataValues.quantity}} </span>
+                  <div class="ui left aligned">
+                    <span class="quantity"><strong>Product ID: </strong>{{dataValues.id}}</span>
                   </div>
-                  <div class="meta ui left aligned">
-                    <span class="category">Category: {{dataValues.category}} </span>
+                  <div class="ui left aligned">
+                    <span class="category"><strong>Category: </strong>{{dataValues.category}}</span>
                   </div>
-                  <div class="meta ui left aligned">
-                    <span class="date">Date Posted: {{dataValues.createdAt}}</span>
+                  <div class="ui left aligned">
+                    <span class="date"><strong>Date Posted: </strong> {{dataValues.createdAt}}</span>
                   </div>
                 </div>
               </div>
               <div class="ui two bottom attached buttons">
-                <button type="submit" class="ui inverted purple button">
+                <button type="submit" data-id="{{dataValues.id}}" class="ui inverted purple button">
                   <i class="add icon"></i>
-                  Cart
+                  Purchase
                 </button>
                 <button type="submit" class="ui inverted pink button">
                   <i class="heart outline like icon"></i>
@@ -53,3 +52,22 @@
         </div>
       </div>
     </main>
+
+    <script>
+      $("#purchasebutton").on("click", function (event) {
+        let id = $(this).data("id")
+        
+        console.log(id)
+
+        $.ajax({
+            type: "delete",
+            url: "/api/deleteitem/" + id
+        }).then(function(deletedItem) {
+            console.log(console.log(deletedItem))
+            window.location.reload()
+            return alert("Thanks for purchasing!")
+        }).catch(function(err) {
+          console.log(err)
+        })
+    })
+    </script>

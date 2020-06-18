@@ -1,7 +1,6 @@
 $(function() {
     const categories = $("#mainCategories")
     const item = $(".item")
-    let newItem = []
 
     categories.on("change",function(event){
         console.log(event.target.value);
@@ -13,9 +12,11 @@ $(function() {
         $.get(`/api/categories/${category}`)
         .then(items => {
             console.log(items);
+            window.location.replace("/categories/" + category)
         })
         .catch(function(err) {
             console.log(err);
         });
+
     }
 });
