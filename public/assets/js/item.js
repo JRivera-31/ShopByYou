@@ -13,7 +13,6 @@ $(function () {
         const itemName = $('.itemName').val().trim();
         const price = $('.price').val().trim();
         const category = $('#categories').val();
-        const quantity = $('.quantity').val().trim();
         const description = $('.description').val().trim();
         const file = $("#userImg")[0].files[0]
         console.log(file)
@@ -23,16 +22,10 @@ $(function () {
         formData.append('file', $("#userImg")[0].files[0])
         console.log('here')
 
-        // Validate if price is not a number
-        // if(typeof price != "number") {
-        //     return alert("Price must be a number!");
-        // }
-
         // Create object for values
         let userItem = {
             item_name: itemName,
             category: category,
-            quantity: quantity,
             description: description,
             price: price,
         }
