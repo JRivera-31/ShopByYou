@@ -10,13 +10,6 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
        allowNull: false
     },
-    quantity: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      validate: {
-        isInt: true
-      }
-    },
     image: {
       type: DataTypes.STRING,
       allowNull: false

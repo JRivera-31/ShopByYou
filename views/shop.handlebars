@@ -6,9 +6,9 @@
      <main class="ui center aligned container">
       <div class="ui four cards">
         <div class="ui stackable four column grid">
-                  {{#each items}} 
+          {{#each items}} 
           <div class="column">
-            <div class="ui card">
+            <div id="itemcard" class="ui card">
               <div class="content">
                 <div class="header">
                   <img
@@ -25,7 +25,7 @@
                     <span class="price"><strong>Price: </strong>${{dataValues.price}}</span>
                   </div>
                   <div class="ui left aligned">
-                    <span class="quantity"><strong>Quantity: </strong>{{dataValues.quantity}}</span>
+                    <span id="itemId"><strong>Product ID: </strong>{{dataValues.id}}</span>
                   </div>
                   <div class="ui left aligned">
                     <span class="category"><strong>Category: </strong>{{dataValues.category}}</span>
@@ -36,9 +36,9 @@
                 </div>
               </div>
               <div class="ui two bottom attached buttons">
-                <button type="submit" class="ui inverted purple button">
+                <button type="button" data-id="{{dataValues.id}}" id="purchasebutton" class="ui inverted purple button">
                   <i class="add icon"></i>
-                  Cart 
+                  Purchase
                 </button>
                 <button type="submit" class="ui inverted pink button">
                   <i class="heart outline like icon"></i>
@@ -51,3 +51,22 @@
         </div>
       </div>
     </main>
+
+    <script>
+      $("#purchasebutton").on("click", function (event) {
+        let id = $(this).data("id")
+        
+        console.log(id)
+
+        $.ajax({
+            type: "delete",
+            url: "/api/deleteitem/" + id
+        }).then(function(deletedItem) {
+            console.log(console.log(deletedItem))
+            window.location.reload()
+            return alert("Thanks for purchasing!")
+        }).catch(function(err) {
+          console.log(err)
+        })
+    })
+    </script>
