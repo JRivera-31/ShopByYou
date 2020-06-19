@@ -3,14 +3,16 @@
 
 ## Project Description
 
-This project is a simple application that allows....  The application is deployed on Heroku for the server to run and function properly.   
+ShopByYou is a simple, hassle free way for users to shop and sell online. While shopping, a user can flip through the categories to find the products they are seeking with ease, and sellers can post listings based on criteria that will put their products on the shelves of our virtual storefront.
+
+The application is deployed on Heroku for the server to run and function properly.   
 
 
 ## Deployment
 
 [ShopByYou Heroku Application](https://young-earth-96498.herokuapp.com/)
 
-![ShopByYou](public/assets/images/shopHome.png)
+![ShopByYou](public/assets/images/shopByYou.gif)
 
 ## Table of Contents
   * [Installation](#installation)
@@ -31,10 +33,9 @@ npm i
 
     ```
     AS AN Avid Shopper & Seller
-    I WANT to shop for unique items
-    SO THAT I can support small businesses
-    I WANT to sell items 
-    SO THAT I can pass along my unique items
+    I WANT to be able to shop for and sell unique items
+    SO THAT I can pass my unique items as well as buy other people’s items
+
     ```
 
 
@@ -56,6 +57,7 @@ Libraries
 
 npm Packages
 - [multer](https://www.npmjs.com/package/multer)
+- [google-cloud](https://cloud.google.com/)
 - [express](https://www.npmjs.com/package/express)
 - [express-session](https://www.npmjs.com/package/express-session)
 - [mysql2](https://www.npmjs.com/package/mysql2)
@@ -79,7 +81,19 @@ Cloud Server
 <details>
     <summary markdown="span">Click to expand Screenshot Details</summary>
 
-![Home Page](/assets/images/.png)
+![Shop Page](public/assets/images/shopHome.png)
+*Screenshot of Shop Page*
+
+![Category Page](public/assets/images/category.png)
+*Screenshot of Category Page*
+
+![Sell Page](public/assets/images/sell.png)
+*Screenshot of Sell Page*
+
+![Login Page](public/assets/images/login.png)
+*Screenshot of Sell Page*
+
+![Signup Page](public/assets/images/signup.png)
 *Screenshot of Home Page*
 
 </details>
