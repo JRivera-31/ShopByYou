@@ -12,7 +12,7 @@ The application is deployed on Heroku for the server to run and function properl
 
 [ShopByYou Heroku Application](https://shopbyyou.herokuapp.com/)
 
-![ShopByYou](public/assets/images/shopGif.gif)
+![ShopByYou](public/assets/images/shopByYou.gif)
 
 ## Table of Contents
   * [Installation](#installation)
