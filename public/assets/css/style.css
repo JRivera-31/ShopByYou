@@ -25,3 +25,21 @@ img{
   width: 350px;
 }
 
+#cartDivider{
+  width: 60%;
+  margin-left: 5em;
+  
+}
+/* inverted segment/box that contains total price text & compact message box */
+#total-price{
+  width: 15em;
+  text-align: center;
+  padding-bottom: 1.5em;
+}
+/* compact message where price is actually displayed */
+#totalPrice{
+margin-left: 1em;
+}
+#cardRow{
+ height: 1em;
+}
