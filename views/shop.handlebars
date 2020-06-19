@@ -40,7 +40,7 @@
                 </div>
               </div>
               <div class="ui bottom attached buttons">
-                <button type="button" data-id="{{dataValues.id}}" id="purchasebutton" class="ui inverted purple button">
+                <button type="button" data-id="{{dataValues.id}}" class="ui inverted purple button purchasebutton">
                    <i class="shopping cart icon"></i>
                   Add to Cart
                 </button>
@@ -55,7 +55,7 @@
     </main>
 
     <script>
-      $("#purchasebutton").on("click", function (event) {
+      $(".purchasebutton").on("click", function (event) {
         const name = $("#itemname").data("name")
         const price = $("#itemprice").data("price")
         const img = $("#itemImg").data("img")
