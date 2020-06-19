@@ -1,0 +1,65 @@
+<header class="ui center aligned container">
+      <div class="ui sizer vertical segment">
+        <div class="ui huge header">Shopping Cart</div>
+        <p></p>
+      </div>
+    </header>
+    <main>
+      <div class="ui container">
+        <div class="ui relaxed divided items">
+          <div class="item">
+            <div id="displayCart" class="content">
+              
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ui right aligned container">
+          <div class="ui right action input">
+            <div class="ui inverted labeled icon segment">
+              <i class="cart icon"></i>
+              Total Price
+            </div>
+          </div>
+          <div id="totalPrice" class="ui compact message">
+            
+          </div>
+          <button id="clearCart">Clear Cart</button>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      // Grab everything we need
+      const cartArea = $("#displayCart")
+      const totalPrice = $("#totalPrice")
+      const clearCart = $("#clearCart")
+
+      // Get items from local storage
+      let cartItem = JSON.parse(localStorage.getItem("cart-items"))
+
+      console.log(cartItem)
+
+      // Create html
+      let displayImg = `<img src=${cartItem.image} class=ui right spaced image />`
+
+      let displayItem = `<p class='header'><strong>Item Name: </strong>${cartItem.name}</p>
+      <div class="meta">
+       <span class="price">Price: ${cartItem.price}</span>
+      </div>`
+
+      let price = `<p>$${cartItem.price}</p>`
+      
+      // Append elements
+      cartArea.append(displayItem)
+      cartArea.append(displayImg)
+      totalPrice.append(price)
+
+      // To clear cart
+      clearCart.on("click", function(event) {
+        localStorage.clear()
+        window.location.reload()
+      })
+    
+    </script>
