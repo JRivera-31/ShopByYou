@@ -41,25 +41,21 @@
                   </div>
                 </div>
               </div>
-              </div>
-                <div class="ui bottom attached buttons">
-                <button id="purchasebutton" type="submit" data-id="{{dataValues.id}}" class="ui inverted purple button">
-                  <i class="shopping cart icon"></i>
+              <button type="button" data-id="{{dataValues.id}}" class="ui inverted purple button purchasebutton">
+                   <i class="shopping cart icon"></i>
                   Add to Cart
                 </button>
-               
+              </div> 
               </div>
             </div>
           </div>
         {{/each}}
-        </div>
-        
+        </div> 
       </div>
-     
     </main>
 
     <script>
-      $("#purchasebutton").on("click", function (event) {
+      $(".purchasebutton").on("click", function (event) {
         const name = $("#catItemName").data("name")
         const price = $("#catprice").data("price")
         const img = $("#catImg").data("img")
@@ -72,14 +68,14 @@
 
 
         $.ajax({
-            type: "delete",
-            url: "/api/deleteitem/" + id
-        }).then(function(deletedItem) {
-            console.log(console.log(deletedItem))
-            window.location.reload()
-            return alert("Thanks for purchasing!")
-        }).catch(function(err) {
-          console.log(err)
-        })
+            type: "delete",
+            url: "/api/deleteitem/" + id
+        }).then(function(deletedItem) {
+            console.log(console.log(deletedItem))
+            //window.location.reload()
+            return alert("Item added to cart!")
+        }).catch(function(err) {
+          console.log(err)
+        }) 
     })
     </script>
