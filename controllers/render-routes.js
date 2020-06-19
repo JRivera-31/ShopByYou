@@ -31,7 +31,7 @@ router.get("/categories/:category", (req, res) => {
       category: req.params.category
     }
   }).then(items => {
-    res.render("category", { items: items });
+    res.render("category", { items: items, user: req.user });
   });
 });
 
