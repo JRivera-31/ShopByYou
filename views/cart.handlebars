@@ -23,22 +23,27 @@
             </div>
           </div>
           <div id="totalPrice" class="ui compact message">
-            <p></p>
+            
           </div>
+          <button id="clearCart">Clear Cart</button>
         </div>
       </div>
     </main>
 
     <script>
+      // Grab everything we need
       const cartArea = $("#displayCart")
       const totalPrice = $("#totalPrice")
+      const clearCart = $("#clearCart")
 
+      // Get items from local storage
       let cartItem = JSON.parse(localStorage.getItem("cart-items"))
 
       console.log(cartItem)
 
+      // Create html
       let displayImg = `<img src=${cartItem.image} class=ui right spaced image />`
-      
+
       let displayItem = `<p class='header'><strong>Item Name: </strong>${cartItem.name}</p>
       <div class="meta">
        <span class="price">Price: ${cartItem.price}</span>
@@ -46,8 +51,15 @@
 
       let price = `<p>$${cartItem.price}</p>`
       
+      // Append elements
       cartArea.append(displayItem)
       cartArea.append(displayImg)
       totalPrice.append(price)
+
+      // To clear cart
+      clearCart.on("click", function(event) {
+        localStorage.clear()
+        window.location.reload()
+      })
     
     </script>
