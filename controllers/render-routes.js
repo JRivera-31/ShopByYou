@@ -31,13 +31,17 @@ router.get("/categories/:category", (req, res) => {
       category: req.params.category
     }
   }).then(items => {
-    res.render("category", { items: items });
+    res.render("category", { items: items, user: req.user });
   });
 });
 
 router.get("/sell", (req, res) => {
   res.render("sell", { user: req.user });
 });
+
+router.get("/cart", (req, res) => {
+  res.render("cart", {user: req.user})
+})
 
 router.get("/logout", function (req, res) { 
   req.logout();
