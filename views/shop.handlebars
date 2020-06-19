@@ -1,15 +1,16 @@
     <header class="ui center aligned container">
       <div class="ui sizer vertical segment">
-        <div class="ui huge header">ShopByYou</div>
+        <div class="ui huge dividing header">ShopByYou</div>
         <div class="alert"></div>
       </div>
     </header>
      <main class="ui center aligned container">
+        
       <div class="ui four cards">
         <div class="ui stackable four column grid">
           {{#each items}} 
           <div class="column">
-            <div id="itemcard" class="ui card">
+            <div id="itemcard" class="ui fluid card">
               <div class="content">
                 <div class="header">
                   <img
@@ -40,8 +41,8 @@
               </div>
               <div class="ui bottom attached buttons">
                 <button type="button" data-id="{{dataValues.id}}" id="purchasebutton" class="ui inverted purple button">
-                  <i class="dollar sign icon"></i>
-                  Purchase
+                   <i class="shopping cart icon"></i>
+                  Add to Cart
                 </button>
                 
               </div>
@@ -50,6 +51,7 @@
         {{/each}}
         </div>
       </div>
+      
     </main>
 
     <script>

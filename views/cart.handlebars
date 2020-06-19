@@ -1,12 +1,12 @@
 <header class="ui center aligned container">
       <div class="ui sizer vertical segment">
-        <div class="ui huge header">Shopping Cart</div>
+        <div class="ui huge dividing header">Shopping Cart</div>
         <p></p>
       </div>
     </header>
     <main>
       <div class="ui container">
-        <div class="ui relaxed divided items">
+        <div class="ui divided items">
           <div class="item">
             <div id="displayCart" class="content">
               
@@ -15,17 +15,21 @@
             </div>
           </div>
         </div>
+        <div class="ui vertical stripe segment" id="cartDivider"></div>
         <div class="ui right aligned container">
           <div class="ui right action input">
-            <div class="ui inverted labeled icon segment">
+            <div class="ui inverted labeled icon segment" id="total-price">
               <i class="cart icon"></i>
               Total Price
-            </div>
-          </div>
+              
           <div id="totalPrice" class="ui compact message">
             
           </div>
-          <button id="clearCart">Clear Cart</button>
+            </div>
+          </div>
+          <br>
+          <br>
+          <button class="ui inverted purple button" id="clearCart">Clear Cart</button>
         </div>
       </div>
     </main>
@@ -46,9 +50,9 @@
 
       let displayItem = `<p class='header'><strong>Item Name: </strong>${cartItem.name}</p>
       <div class="meta">
-       <span class="price">Price: ${cartItem.price}</span>
+       <span class="price"><strong>Price: </strong>${cartItem.price}</span>
       </div>`
-
+        
       let price = `<p>$${cartItem.price}</p>`
       
       // Append elements

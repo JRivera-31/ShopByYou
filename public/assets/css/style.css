@@ -8,13 +8,6 @@ header{
   color:white;
 }
 
-#footer2 {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  height: 35px;
-  z-index: 2;
-}
 
 .empty-space {
   height: 10%;
@@ -25,3 +18,35 @@ img{
   width: 350px;
 }
 
+#cartDivider{
+  width: 60%;
+  margin-left: 5em;
+  
+}
+/* inverted segment/box that contains total price text & compact message box */
+#total-price{
+  width: 15em;
+  text-align: center;
+  padding-bottom: 1.5em;
+}
+/* compact message where price is actually displayed */
+#totalPrice{
+  margin-left: 1em;
+}
+#cardRow{
+  height: 1em;
+}
+
+#footer2 {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 5em;
+  z-index: 2;
+}
+
+#footer-links{
+  text-align: center;
+ 
+  
+}

@@ -1,12 +1,14 @@
   <header class="ui center aligned container">
       <div class="ui sizer vertical segment">
-        <div class="ui huge header">Sorted By Chosen Category</div>
+        <div class="ui huge dividing header">Sorted By Chosen Category</div>
         <p></p>
       </div>
     </header>
-    <main class="ui center aligned container">      
+    <main class="ui center aligned container">    
+      
       <div class="ui four cards">
-        <div class="ui stackable four column grid">
+       
+        <div class="ui stackable four column grid" >
           {{#each items}}
           <div class="column" >
             <div class="ui fluid card" id="itemCards">
@@ -18,7 +20,8 @@
                   />
                 <h3>{{dataValues.item_name}}</h3>
                 </div>
-                <div class="description ui left aligned">
+                <div class="ui container">
+                <div class="description ui left aligned" >
                   <p>
                       {{dataValues.description}}    
                   </p>
@@ -36,10 +39,11 @@
                   </div>
                 </div>
               </div>
+              </div>
                 <div class="ui bottom attached buttons">
                 <button id="purchasebutton" type="submit" data-id="{{dataValues.id}}" class="ui inverted purple button">
-                  <i class="dollar sign icon"></i>
-                  Purchase
+                  <i class="shopping cart icon"></i>
+                  Add to Cart
                 </button>
                
               </div>
@@ -47,7 +51,9 @@
           </div>
         {{/each}}
         </div>
+        
       </div>
+     
     </main>
 
     <script>
