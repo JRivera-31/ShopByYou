@@ -8,8 +8,8 @@
       <div class="ui four cards">
         <div class="ui stackable four column grid">
           {{#each items}}
-          <div class="column">
-            <div class="ui card">
+          <div class="column" >
+            <div class="ui fluid card" id="itemCards">
               <div class="content">
                 <div class="header">
                   <img
@@ -36,15 +36,12 @@
                   </div>
                 </div>
               </div>
-              <div class="ui two bottom attached buttons">
-                <button type="submit" data-id="{{dataValues.id}}" class="ui inverted purple button">
-                  <i class="add icon"></i>
+                <div class="ui bottom attached buttons">
+                <button id="purchasebutton" type="submit" data-id="{{dataValues.id}}" class="ui inverted purple button">
+                  <i class="dollar sign icon"></i>
                   Purchase
                 </button>
-                <button type="submit" class="ui inverted pink button">
-                  <i class="heart outline like icon"></i>
-                  Favorite
-                </button>
+               
               </div>
             </div>
           </div>
