@@ -8,13 +8,6 @@ header{
   color:white;
 }
 
-#footer2 {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  height: 35px;
-  z-index: 2;
-}
 
 .empty-space {
   height: 10%;
@@ -38,8 +31,21 @@ img{
 }
 /* compact message where price is actually displayed */
 #totalPrice{
-margin-left: 1em;
+  margin-left: 1em;
 }
 #cardRow{
- height: 1em;
+  height: 1em;
+}
+
+#footer2 {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 5em;
+  z-index: 2;
+}
+
+#footer-links{
+  text-align: center;
+  
 }
