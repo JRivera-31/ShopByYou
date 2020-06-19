@@ -10,7 +10,7 @@ The application is deployed on Heroku for the server to run and function properl
 
 ## Deployment
 
-[ShopByYou Heroku Application](https://young-earth-96498.herokuapp.com/)
+[ShopByYou Heroku Application](https://gentle-island-67437.herokuapp.com/)
 
 ![ShopByYou](public/assets/images/shopByYou.gif)
 
