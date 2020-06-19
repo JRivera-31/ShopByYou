@@ -15,11 +15,12 @@
               <div class="content">
                 <div class="header">
                   <img
-                  id="itemImage" data-img="{{dataValues.image}}"
+                  data-img="{{dataValues.image}}"
                     src="{{dataValues.image}}"
                     class="ui right spaced image"
+                    id ="catImg"
                   />
-                <h3 id="itemName" data-itemName="{{dataValues.item_name}}"=>{{dataValues.item_name}}</h3>
+                 <h3 id="catItemName" data-name="{{dataValues.item_name}}">{{dataValues.item_name}}</h3>
                 </div>
                 <div class="ui container">
                 <div class="description ui left aligned" >
@@ -27,7 +28,7 @@
                       {{dataValues.description}}    
                   </p>
                   <div class="ui left aligned">
-                    <span id="itemPrice" data-itemPrice="{{dataValues.price}}" class="price"><strong>Price: </strong>${{dataValues.price}}</span>
+                    <p id="catprice" data-price="{{dataValues.price}}" class="price"><strong>Price: </strong>${{dataValues.price}}</p>
                   </div>
                   <div class="ui left aligned">
                     <span class="quantity"><strong>Product ID: </strong>{{dataValues.id}}</span>
@@ -55,15 +56,16 @@
 
     <script>
       $(".purchasebutton").on("click", function (event) {
-        const name = $("#itemName").data("itemName")
-        const price = $("#itemPrice").data("itemPrice")
-        const img = $("#itemImage").data("itemImage")
+        const name = $("#catItemName").data("name")
+        const price = $("#catprice").data("price")
+        const img = $("#catImg").data("img")
         console.log(price)
-        console.log(name)
-        console.log(img)
 
-        localStorage.setItem("cart-items", JSON.stringify({name: name, price: price, image: img}))
+        let cartItem = {name: name, price: price, image: img}
+
+        localStorage.setItem("cart-items", JSON.stringify(cartItem))
         let id = $(this).data("id")
+
 
         $.ajax({
             type: "delete",
