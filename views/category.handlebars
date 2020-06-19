@@ -6,32 +6,30 @@
     </header>
     <main class="ui center aligned container">    
       
-      <div class="ui four cards">
-       
-        <div class="ui stackable four column grid" >
-          {{#each items}}
-          <div class="column" >
-            <div class="ui fluid card" id="itemCards">
+       <div class="ui four cards">
+        <div class="ui stackable four column grid">
+          {{#each items}} 
+          <div class="column">
+            <div id="itemcard" class="ui fluid card">
               <div class="content">
                 <div class="header">
                   <img
-                  data-img="{{dataValues.image}}"
+                    data-img="{{dataValues.image}}"
                     src="{{dataValues.image}}"
-                    class="ui right spaced image"
-                    id ="catImg"
+                    class="ui right spaced image itemImg"
                   />
-                 <h3 id="catItemName" data-name="{{dataValues.item_name}}">{{dataValues.item_name}}</h3>
+                <h3 class="itemname" data-name="{{dataValues.item_name}}">{{dataValues.item_name}}</h3>
                 </div>
                 <div class="ui container">
-                <div class="description ui left aligned" >
+                <div class="description ui left aligned">
                   <p>
                       {{dataValues.description}}    
                   </p>
                   <div class="ui left aligned">
-                    <p id="catprice" data-price="{{dataValues.price}}" class="price"><strong>Price: </strong>${{dataValues.price}}</p>
+                    <p data-price="{{dataValues.price}}" class="price itemprice"><strong>Price: </strong>${{dataValues.price}}</p>
                   </div>
                   <div class="ui left aligned">
-                    <span class="quantity"><strong>Product ID: </strong>{{dataValues.id}}</span>
+                    <span id="itemId"><strong>Product ID: </strong>{{dataValues.id}}</span>
                   </div>
                   <div class="ui left aligned">
                     <span class="category"><strong>Category: </strong>{{dataValues.category}}</span>
@@ -39,26 +37,29 @@
                   <div class="ui left aligned">
                     <span class="date"><strong>Date Posted: </strong> {{dataValues.createdAt}}</span>
                   </div>
+                  </div>
                 </div>
               </div>
-              <button type="button" data-id="{{dataValues.id}}" class="ui inverted purple button purchasebutton">
+              <div class="ui bottom attached buttons">
+                <button type="button" data-name="{{dataValues.item_name}}" data-img="{{dataValues.image}}" data-price="{{dataValues.price}}" data-id="{{dataValues.id}}" class="ui inverted purple button catpurchasebutton">
                    <i class="shopping cart icon"></i>
                   Add to Cart
                 </button>
-              </div> 
+                
               </div>
             </div>
           </div>
         {{/each}}
-        </div> 
+        </div>
       </div>
+
     </main>
 
     <script>
-      $(".purchasebutton").on("click", function (event) {
-        const name = $("#catItemName").data("name")
-        const price = $("#catprice").data("price")
-        const img = $("#catImg").data("img")
+      $(".catpurchasebutton").on("click", function (event) {
+        const name = $(this).data("name")
+        const price = $(this).data("price")
+        const img = $(this).data("img")
         console.log(price)
 
         let cartItem = {name: name, price: price, image: img}
@@ -72,7 +73,7 @@
             url: "/api/deleteitem/" + id
         }).then(function(deletedItem) {
             console.log(console.log(deletedItem))
-            //window.location.reload()
+            window.location.reload()
             return alert("Item added to cart!")
         }).catch(function(err) {
           console.log(err)
