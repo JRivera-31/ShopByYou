@@ -13,17 +13,19 @@
               <div class="content">
                 <div class="header">
                   <img
+                    id="itemImg"
+                    data-img="{{dataValues.image}}"
                     src="{{dataValues.image}}"
                     class="ui right spaced image"
                   />
-                <h3>{{dataValues.item_name}}</h3>
+                <h3 id="itemname" data-name="{{dataValues.item_name}}">{{dataValues.item_name}}</h3>
                 </div>
                 <div class="description ui left aligned">
                   <p>
                       {{dataValues.description}}    
                   </p>
                   <div class="ui left aligned">
-                    <span class="price"><strong>Price: </strong>${{dataValues.price}}</span>
+                    <p id="itemprice" data-price="{{dataValues.price}}" class="price"><strong>Price: </strong>${{dataValues.price}}</p>
                   </div>
                   <div class="ui left aligned">
                     <span id="itemId"><strong>Product ID: </strong>{{dataValues.id}}</span>
@@ -36,15 +38,12 @@
                   </div>
                 </div>
               </div>
-              <div class="ui two bottom attached buttons">
+              <div class="ui bottom attached buttons">
                 <button type="button" data-id="{{dataValues.id}}" id="purchasebutton" class="ui inverted purple button">
-                  <i class="add icon"></i>
+                  <i class="dollar sign icon"></i>
                   Purchase
                 </button>
-                <button type="submit" class="ui inverted pink button">
-                  <i class="heart outline like icon"></i>
-                  Favorite
-                </button>
+                
               </div>
             </div>
           </div>
@@ -55,17 +54,25 @@
 
     <script>
       $("#purchasebutton").on("click", function (event) {
+        const name = $("#itemname").data("name")
+        const price = $("#itemprice").data("price")
+        const img = $("#itemImg").data("img")
+        console.log(price)
+
+        let cartItem = {name: name, price: price, image: img}
+
+        localStorage.setItem("cart-items", JSON.stringify(cartItem))
         let id = $(this).data("id")
 
         $.ajax({
-            type: "delete",
-            url: "/api/deleteitem/" + id
-        }).then(function(deletedItem) {
-            console.log(console.log(deletedItem))
-            window.location.reload()
-            return alert("Thanks for purchasing!")
-        }).catch(function(err) {
-          console.log(err)
-        })
+            type: "delete",
+            url: "/api/deleteitem/" + id
+        }).then(function(deletedItem) {
+            console.log(console.log(deletedItem))
+            window.location.reload()
+            return alert("Item added to cart!")
+        }).catch(function(err) {
+          console.log(err)
+        }) 
     })
     </script>

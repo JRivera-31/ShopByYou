@@ -8,25 +8,9 @@
       <div class="ui container">
         <div class="ui relaxed divided items">
           <div class="item">
-            <div class="ui small image">
-              <img
-                src="https://assets.awwwards.com/awards/images/2013/06/secret-life-heroes%20(44).jpg"
-              />
-            </div>
-            <div class="content">
-              <a class="header">Item Name {{!-- handlbars --}}</a>
-              <div class="meta">
-                <span class="quantity">Price: {{!-- handlbars --}}</span>
-              </div>
-              <div class="meta">
-                <span class="quantity">Quantity: {{!-- handlbars --}} </span>
-              </div>
-              <div class="description">
-                <div class="meta">
-                  <a><i class="trash alternate outline icon"></i>Remove {{!-- handlbars --}}</a>
-                </div>
-                A description which may flow for several lines and give context
-                to the content.
+            <div id="displayCart" class="content">
+              
+                
               </div>
             </div>
           </div>
@@ -38,9 +22,32 @@
               Total Price
             </div>
           </div>
-          <div class="ui compact message">
-            <p>$100 {{!-- handlbars --}}</p>
+          <div id="totalPrice" class="ui compact message">
+            <p></p>
           </div>
         </div>
       </div>
     </main>
+
+    <script>
+      const cartArea = $("#displayCart")
+      const totalPrice = $("#totalPrice")
+
+      let cartItem = JSON.parse(localStorage.getItem("cart-items"))
+
+      console.log(cartItem)
+
+      let displayImg = `<img src=${cartItem.image} class=ui right spaced image />`
+      
+      let displayItem = `<p class='header'><strong>Item Name: </strong>${cartItem.name}</p>
+      <div class="meta">
+       <span class="price">Price: ${cartItem.price}</span>
+      </div>`
+
+      let price = `<p>$${cartItem.price}</p>`
+      
+      cartArea.append(displayItem)
+      cartArea.append(displayImg)
+      totalPrice.append(price)
+    
+    </script>
