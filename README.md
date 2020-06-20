@@ -14,9 +14,6 @@ The application is deployed on Heroku for the server to run and function properl
 
 [ShopByYou Demo](https://youtu.be/tAsQGYhLBw8)
 
-![ShopByYou](public/assets/images/shopByYouHome.png)
-
-
 ## Table of Contents
   * [Installation](#installation)
   * [Usage](#usage)
