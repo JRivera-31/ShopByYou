@@ -10,22 +10,22 @@ let totalPrice = 0
 
 for (let i = 0; i < cartItems.length; i++) {
   // Create html
-  let displayImg = `<img src=${cartItems[i].image} class=ui right spaced image />`
-
   let displayItem = `<p class='header'><strong>Item Name: </strong>${cartItems[i].name}</p>
   <div class="meta">
-  <span class="price"><strong>Price: </strong>${cartItems[i].price}</span>
-  </div>`
+  <img src=${cartItems[i].image} class=ui right spaced image />
+  <br>
+  <span class="price"><strong>Price: </strong>$${cartItems[i].price}</span>
+  </div>
+  <hr>`
 
   // Calculate total price
   totalPrice += cartItems[i].price
 
   // Append elements
   cartArea.append(displayItem)
-  cartArea.append(displayImg)
 }
 
-displayTotalPrice.append(totalPrice)
+displayTotalPrice.append("$" + totalPrice)
 
 // To clear cart
 clearCart.on("click", function(event) {
