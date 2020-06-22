@@ -12,16 +12,16 @@ $(".purchasebutton").on("click", function (event) {
   localStorage.setItem("cart-items", JSON.stringify(cartItems));
   let id = $(this).data("id");
 
-  $.ajax({
-    type: "delete",
-    url: "/api/deleteitem/" + id,
-  })
-    .then(function (deletedItem) {
-      console.log(console.log(deletedItem));
-      window.location.reload();
-      return alert("Item added to cart!");
-    })
-    .catch(function (err) {
-      console.log(err);
-    });
+  // $.ajax({
+  //   type: "delete",
+  //   url: "/api/deleteitem/" + id,
+  // })
+  //   .then(function (deletedItem) {
+  //     console.log(console.log(deletedItem));
+  //     window.location.reload();
+  //     return alert("Item added to cart!");
+  //   })
+  //   .catch(function (err) {
+  //     console.log(err);
+  //   });
 });
