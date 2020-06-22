@@ -1,15 +1,12 @@
 // Grab everything we need
 const cartArea = $("#displayCart")
-const totalPrice = $("#totalPrice")
+const displayTotalPrice = $("#totalPrice")
 const clearCart = $("#clearCart")
-
-// Get items from local storage
-// let cartItem = JSON.parse(localStorage.getItem("cart-items"))
-
-// console.log(cartItem)
 
 // Get array of items from local storage
 var cartItems = JSON.parse(localStorage.getItem("cart-items")) || [];
+
+let totalPrice = 0
 
 for (let i = 0; i < cartItems.length; i++) {
   // Create html
@@ -19,14 +16,17 @@ for (let i = 0; i < cartItems.length; i++) {
   <div class="meta">
   <span class="price"><strong>Price: </strong>${cartItems[i].price}</span>
   </div>`
-    
-  let price = `<p>$${cartItems[i].price}</p>`
+
+  // Calculate total price
+  totalPrice += cartItems[i].price
 
   // Append elements
   cartArea.append(displayItem)
   cartArea.append(displayImg)
-  totalPrice.append(price)
 }
+
+displayTotalPrice.append(totalPrice)
+
 // To clear cart
 clearCart.on("click", function(event) {
   localStorage.clear()
