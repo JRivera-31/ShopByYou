@@ -11,6 +11,7 @@ $(function () {
         const itemName = $('.itemName').val().trim();
         const price = $('.price').val().trim();
         const category = $('#categories').val();
+        const quantity = $(".quantity").val().trim()
         const description = $('.description').val().trim();
         const file = $("#userImg")[0].files[0]
         console.log(file)
@@ -24,6 +25,7 @@ $(function () {
         let userItem = {
             item_name: itemName,
             category: category,
+            quantity: quantity,
             description: description,
             price: price,
         }

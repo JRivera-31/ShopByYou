@@ -4,6 +4,7 @@ $(".purchasebutton").on("click", function (event) {
   const name = $(this).data("name");
   const price = $(this).data("price");
   const img = $(this).data("img");
+  const quantity = $(this).data("quantity")
 
   let item = { name: name, price: price, image: img };
   cartItems.push(item);

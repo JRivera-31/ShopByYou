@@ -29,7 +29,10 @@
                     <p data-price="{{dataValues.price}}" class="price itemprice"><strong>Price: </strong>${{dataValues.price}}</p>
                   </div>
                   <div class="ui left aligned">
-                    <span id="itemId"><strong>Product ID: </strong>{{dataValues.id}}</span>
+                    <span class="quantity"><strong>Quantity: </strong>{{dataValues.quantity}}</span>
+                  </div>
+                  <div class="ui left aligned">
+                    <span class="itemId"><strong>Product ID: </strong>{{dataValues.id}}</span>
                   </div>
                   <div class="ui left aligned">
                     <span class="category"><strong>Category: </strong>{{dataValues.category}}</span>
@@ -41,7 +44,7 @@
                 </div>
               </div>
               <div class="ui bottom attached buttons">
-                <button type="button" data-name="{{dataValues.item_name}}" data-img="{{dataValues.image}}" data-price="{{dataValues.price}}" data-id="{{dataValues.id}}" class="ui inverted purple button purchasebutton">
+                <button type="button" data-name="{{dataValues.item_name}}" data-quantity={{dataValues.quantity}} data-img="{{dataValues.image}}" data-price="{{dataValues.price}}" data-id="{{dataValues.id}}" class="ui inverted purple button purchasebutton">
                    <i class="shopping cart icon"></i>
                   Add to Cart
                 </button>
