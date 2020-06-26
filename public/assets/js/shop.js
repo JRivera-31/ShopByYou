@@ -6,6 +6,8 @@ $(".purchasebutton").on("click", function (event) {
   const img = $(this).data("img");
   const quantity = $(this).data("quantity")
 
+  let newQuantity = quantity - 1
+
   let item = { name: name, price: price, image: img };
   cartItems.push(item);
   console.log(cartItems);
@@ -14,11 +16,12 @@ $(".purchasebutton").on("click", function (event) {
   let id = $(this).data("id");
 
   $.ajax({
-    type: "delete",
-    url: "/shop/deleteitem/" + id,
+    type: "put",
+    url: "/shop/updateitem/" + id,
+    data: newQuantity
   })
-    .then(function (deletedItem) {
-      console.log(console.log(deletedItem));
+    .then(function (updatedItem) {
+      console.log(console.log(updatedItem));
       window.location.reload();
       return alert("Item added to cart!");
     })

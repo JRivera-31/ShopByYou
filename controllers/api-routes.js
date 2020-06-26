@@ -94,14 +94,19 @@ module.exports = function (app) {
     db.Item.findAll({}).then((items) => res.json(items));
   });
 
-  // Delete item
-  app.delete("/shop/deleteitem/:id", (req, res) => {
-    db.Item.destroy({
-      where: {
-        id: req.params.id
-      }
-    }).then(deleted => {
-      res.json(deleted)
+  // Update an item
+  app.put("/shop/updateitem/:id", (req, res) => {
+    let selected = req.params.id
+    let updatedQuantity = req.body.newQuantity
+    console.log(selected)
+    console.log(updatedQuantity)
+
+    db.Item.update({
+      where: { id: selected },
+      quantity: updatedQuantity
+    })
+      .then(updatedItem => {
+      res.json(updatedItem)
     }).catch(err => {
       res.status(500).json(err)
     })
