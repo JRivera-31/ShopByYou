@@ -3,8 +3,7 @@ const express = require("express");
 const session = require("express-session")
 const app = express();
 const passport = require("./config/passport.js")
-// Path and multer for image uploading
-const path = require("path")
+const compression = require("compression")
 
 //port
 const PORT = process.env.PORT || 8081;
@@ -13,6 +12,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(express.static(__dirname + "/public"));
+
+app.use(compression())
 
 //handlebars
 const exphbs = require("express-handlebars");
@@ -36,8 +37,8 @@ const e = require("express");
 
 
 //Syncing sequelize models and then starting express server
-db.sequelize.sync().then(function() {
-  app.listen(PORT, function() {
+db.sequelize.sync().then(function () {
+  app.listen(PORT, function () {
     console.log("🚀 App listening on PORT " + PORT);
   });
 });

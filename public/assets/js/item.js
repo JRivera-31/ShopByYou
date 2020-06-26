@@ -1,9 +1,7 @@
-
 //inputting item up for sell
 $(function () {
     console.log('attached')
     // grabbing name values
-    const image = $('#userImg');
     const formSubmit = $('#sellItem');
     
     formSubmit.submit(function (event) {
@@ -35,7 +33,7 @@ $(function () {
         // Post to our api
         $.ajax({
             type:'post',
-            url: '/api/sellitem',
+            url: '/shop/sellitem',
             data: formData,
             contentType: false,
             processData: false
@@ -46,6 +44,5 @@ $(function () {
         })
         .catch(err=> console.log(err))
     });
-
 })
 

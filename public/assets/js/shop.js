@@ -14,7 +14,7 @@ $(".purchasebutton").on("click", function (event) {
 
   $.ajax({
     type: "delete",
-    url: "/api/deleteitem/" + id,
+    url: "/shop/deleteitem/" + id,
   })
     .then(function (deletedItem) {
       console.log(console.log(deletedItem));
