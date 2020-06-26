@@ -1,11 +1,8 @@
 $(function() {
     const categories = $("#mainCategories")
-    const item = $(".item")
 
     categories.on("change",function(event){
-        console.log(event.target.value);
-        choooseCategory(event.target.value);
-    
+        window.location.replace("/categories/" + event.target.value)
     })
 
     function choooseCategory(category){

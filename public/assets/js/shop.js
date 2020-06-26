@@ -13,7 +13,8 @@ $(".purchasebutton").on("click", function (event) {
   console.log(cartItems);
 
   localStorage.setItem("cart-items", JSON.stringify(cartItems));
-  let id = $(this).data("id");
+ 
+  return alert("Item added to cart!")
 
   $.ajax({
     type: "put",
