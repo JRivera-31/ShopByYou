@@ -5,8 +5,11 @@ $(".purchasebutton").on("click", function (event) {
   const price = $(this).data("price");
   const img = $(this).data("img");
   const quantity = $(this).data("quantity")
-
+  const id = $(this).data("id")
+  
   let newQuantity = quantity - 1
+
+  let updatedQuantity = { quant: newQuantity }
 
   let item = { name: name, price: price, image: img };
   cartItems.push(item);
@@ -14,12 +17,12 @@ $(".purchasebutton").on("click", function (event) {
 
   localStorage.setItem("cart-items", JSON.stringify(cartItems));
  
-  return alert("Item added to cart!")
+  // return alert("Item added to cart!")
 
   $.ajax({
     type: "put",
     url: "/shop/updateitem/" + id,
-    data: newQuantity
+    data: updatedQuantity
   })
     .then(function (updatedItem) {
       console.log(console.log(updatedItem));

@@ -96,16 +96,14 @@ module.exports = function (app) {
 
   // Update an item
   app.put("/shop/updateitem/:id", (req, res) => {
-    let selected = req.params.id
-    let updatedQuantity = req.body.newQuantity
+    let updatedQuantity = req.body
+    let selected = { id: parseInt(req.params.id) }
+    let value = { quantity: updatedQuantity.quant }
     console.log(selected)
-    console.log(updatedQuantity)
+    console.log(updatedQuantity.quant)
 
-    db.Item.update({
-      where: { id: selected },
-      quantity: updatedQuantity
-    })
-      .then(updatedItem => {
+    db.Item.update({ where: selected }, value)
+    .then(updatedItem => {
       res.json(updatedItem)
     }).catch(err => {
       res.status(500).json(err)
