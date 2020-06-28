@@ -11,7 +11,7 @@ $(".purchasebutton").on("click", function (event) {
   // Assign the new quanttiy to an object
   let updatedQuantity = { quant: newQuantity }
   // Assign all the item data attributes to an object
-  let item = { name: name, price: price, image: img };
+  let item = { name: name, price: price, image: img }
   // Push the object to an array
   cartItems.push(item);
   console.log(cartItems);
