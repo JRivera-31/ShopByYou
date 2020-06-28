@@ -6,19 +6,18 @@ $(".purchasebutton").on("click", function (event) {
   const img = $(this).data("img");
   const quantity = $(this).data("quantity")
   const id = $(this).data("id")
-  
+  // Decrement quantity
   let newQuantity = quantity - 1
-
+  // Assign the new quanttiy to an object
   let updatedQuantity = { quant: newQuantity }
-
+  // Assign all the item data attributes to an object
   let item = { name: name, price: price, image: img };
+  // Push the object to an array
   cartItems.push(item);
   console.log(cartItems);
-
+  // Pass the array to local storage
   localStorage.setItem("cart-items", JSON.stringify(cartItems));
- 
-  // return alert("Item added to cart!")
-
+  // Send put request to update quantity
   $.ajax({
     type: "put",
     url: "/shop/updateitem/" + id,

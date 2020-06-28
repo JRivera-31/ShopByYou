@@ -96,12 +96,15 @@ module.exports = function (app) {
 
   // Update an item
   app.put("/shop/updateitem/:id", (req, res) => {
+    // Grab the quantity object
     let updatedQuantity = req.body
+    // Assign the id object to a variable
     let selected = { id: parseInt(req.params.id) }
+    // Assign the quantity object to a variabe
     let value = { quantity: updatedQuantity.quant }
     console.log(selected)
     console.log(updatedQuantity.quant)
-
+    // Update the quantity
     db.Item.update({ where: selected }, value)
     .then(updatedItem => {
       res.json(updatedItem)
