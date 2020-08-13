@@ -19,24 +19,25 @@ const bucket = storage.bucket(process.env.GCS_BUCKET);
 
 module.exports = function (app) {
   // Authenitcate login
-  app.post("/api/login", passport.authenticate("local"), (req, res) => {
+  app.post("/user/login", passport.authenticate("local"), (req, res) => {
     res.json(req.user);
   });
   // Create new user
-  app.post("/api/signup", (req, res) => {
+  app.post("/user/signup", (req, res) => {
     db.User.create({
       email: req.body.email,
       password: req.body.password,
     })
       .then(function () {
-        res.redirect(307, "/api/login");
+        res.redirect(307, "/user/login");
       })
       .catch(function (err) {
         res.status(401).json(err);
       });
   });
+
   // Get user data
-  app.get("/api/user_data", (req, res) => {
+  app.get("/user/user_data", (req, res) => {
     if (!req.user) {
       res.json({});
     } else {
@@ -48,7 +49,7 @@ module.exports = function (app) {
   });
 
   // Creating new item
-  app.post("/api/sellitem", multer.single("file"), (req, res) => {
+  app.post("/shop/sellitem", multer.single("file"), (req, res) => {
     // Create a new blob in the bucket and upload the file data.
     const newFileName = uuidv1() + "-" + req.file.originalname;
     const blob = bucket.file(newFileName);
@@ -78,7 +79,7 @@ module.exports = function (app) {
     blobStream.end(req.file.buffer);
   });
 
-  app.get("/api/categories/:category", (req, res) => {
+  app.get("/shop/categories/:category", (req, res) => {
     db.Item.findAll({
       where: {
         category: req.params.category,
@@ -89,21 +90,43 @@ module.exports = function (app) {
   });
 
   // Get all items
-  app.get("/api/items", (req, res) => {
+  app.get("/shop/items", (req, res) => {
     db.Item.findAll({}).then((items) => res.json(items));
   });
 
-  // Delete item
-  app.delete("/api/deleteitem/:id", (req, res) => {
-    db.Item.destroy({
-      where: {
-        id: req.params.id
-      }
-    }).then(deleted => {
-      res.json(deleted)
+  // Update an item
+  app.put("/shop/updateitem/:id", (req, res) => {
+    // Grab the quantity object
+    console.log(req.params.id)
+    let quantity = req.body
+    console.log(quantity.quantity)
+    let newQuantity = quantity.quantity - 1
+    
+    // Update the quantity
+    db.Item.update(
+      { quantity: newQuantity },
+      { where: {id: req.params.id}  }
+    )
+    .then(updatedItem => {
+      res.json(updatedItem)
     }).catch(err => {
       res.status(500).json(err)
     })
   })
 
+  app.delete("/shop/item/:id", (req, res) => {
+    db.Item.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then((deleted) => {
+      if (deleted === 1) {
+        res.status(200).json({ message: "Item deleted" })
+      }
+    }).catch(err => {
+      if (err) res.status(404).json(err)
+    }) 
+  })
+
 };
+

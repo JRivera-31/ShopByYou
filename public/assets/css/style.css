@@ -8,7 +8,6 @@ header{
   color:white;
 }
 
-
 .empty-space {
   height: 10%;
 }
@@ -41,12 +40,10 @@ img{
   position: fixed;
   bottom: 0;
   width: 100%;
-  height: 5em;
+  height: 3em;
   z-index: 2;
 }
 
 #footer-links{
-  text-align: center;
- 
-  
+  text-align: center; 
 }
