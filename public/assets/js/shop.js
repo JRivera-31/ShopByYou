@@ -6,10 +6,8 @@ $(".purchasebutton").on("click", function (event) {
   const img = $(this).data("img");
   const quantity = $(this).data("quantity")
   const id = $(this).data("id")
-  // Decrement quantity
-  let newQuantity = quantity - 1
-  // Assign the new quanttiy to an object
-  let updatedQuantity = { quant: newQuantity }
+  
+  console.log(quantity)
   // Assign all the item data attributes to an object
   let item = { name: name, price: price, image: img }
   // Push the object to an array
@@ -21,10 +19,10 @@ $(".purchasebutton").on("click", function (event) {
   $.ajax({
     type: "put",
     url: "/shop/updateitem/" + id,
-    data: updatedQuantity
+    data: { quantity: quantity }
   })
     .then(function (updatedItem) {
-      console.log(console.log(updatedItem));
+      console.log(updatedItem);
       window.location.reload();
       return alert("Item added to cart!");
     })
@@ -32,3 +30,14 @@ $(".purchasebutton").on("click", function (event) {
       console.log(err);
     });
 });
+
+$(".deletebutton").on("click", function (event) {
+  const id = $(this).data("id")
+
+  $.ajax({
+    type: "delete",
+    url: "/shop/item/" + id 
+  }).then(function (deletedItem) {
+    window.location.reload()
+  })
+})

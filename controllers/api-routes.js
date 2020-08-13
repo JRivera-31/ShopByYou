@@ -97,15 +97,17 @@ module.exports = function (app) {
   // Update an item
   app.put("/shop/updateitem/:id", (req, res) => {
     // Grab the quantity object
-    let updatedQuantity = req.body
-    // Assign the id object to a variable
-    let selected = { id: parseInt(req.params.id) }
-    // Assign the quantity object to a variabe
-    let value = { quantity: updatedQuantity.quant }
-    console.log(selected)
-    console.log(updatedQuantity.quant)
+    let quantity = req.body
+    console.log(quantity)
+    
     // Update the quantity
-    db.Item.update({ where: selected }, value)
+    db.Item.update({
+      // quantity: 
+      where: {
+        quantity: quantity.quantity - 1,
+        id: req.params.id
+      }
+    })
     .then(updatedItem => {
       res.json(updatedItem)
     }).catch(err => {
@@ -113,4 +115,19 @@ module.exports = function (app) {
     })
   })
 
+  app.delete("/shop/item/:id", (req, res) => {
+    db.Item.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then((deleted) => {
+      if (deleted === 1) {
+        res.status(200).json({ message: "Item deleted" })
+      }
+    }).catch(err => {
+      if (err) res.status(404).json(err)
+    }) 
+  })
+
 };
+
